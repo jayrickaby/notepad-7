@@ -7,7 +7,7 @@ import "Components"
 ToolBar {
     id: notepadToolbar
 
-    height: 16
+    height: 19
 
     RowLayout {
         id: toolBarLayout
