@@ -16,6 +16,10 @@ ApplicationWindow {
 
     }
 
+    TextEdit {
+        anchors.fill: parent
+    }
+
     Component.onCompleted: {
         width = Screen.width * 0.75
         height = Screen.height * 0.75
