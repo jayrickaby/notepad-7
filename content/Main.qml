@@ -29,6 +29,27 @@ ApplicationWindow {
                     MenuItem {
                         text: "Open..."
                     }
+                    MenuItem {
+                        text: "Save"
+                    }
+                    MenuItem {
+                        text: "Save As..."
+                    }
+
+                    MenuSeparator { }
+
+                    MenuItem {
+                        text: "Page Setup..."
+                    }
+                    MenuItem {
+                        text: "Print..."
+                    }
+
+                    MenuSeparator { }
+
+                    MenuItem {
+                        text: "Exit"
+                    }
                 }
             }
         }
