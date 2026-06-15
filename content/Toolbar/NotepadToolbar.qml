@@ -28,7 +28,7 @@ ToolBar {
         // This ensures that the menubar gradient is correctly aligned
         anchors.topMargin: -1
 
-        source: window.assetsUrl + "windows/menu/menubar_background.png"
+        source: window.assetsUrl + "windows/menu/menubar.png"
     }
 
     RowLayout {
