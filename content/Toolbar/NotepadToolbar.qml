@@ -8,6 +8,9 @@ ToolBar {
     id: notepadToolbar
     height: 19
 
+    // This offsets buttons 1px down
+    topPadding: 1
+    bottomPadding: 0
     leftPadding: 0
     rightPadding: 0
 
@@ -17,7 +20,14 @@ ToolBar {
         border.top: 1
         border.bottom: 1
 
-        anchors.fill: parent
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        anchors.top: parent.top
+
+        // This ensures that the menubar gradient is correctly aligned
+        anchors.topMargin: -1
+
         source: window.assetsUrl + "windows/menu/menubar_background.png"
     }
 
@@ -31,7 +41,7 @@ ToolBar {
 
         anchors.left: parent.left
 
-        anchors.leftMargin: 6
+        anchors.leftMargin: 1
 
         ToolbarButton {
             id: fileButton
