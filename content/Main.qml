@@ -7,6 +7,10 @@ import "Toolbar"
 
 ApplicationWindow {
     id: window
+
+    readonly property url baseUrl: Qt.resolvedUrl("../")
+    readonly property url assetsUrl: Qt.resolvedUrl("../assets/")
+
     width: 640
     height: 480
     visible: true
