@@ -1,5 +1,6 @@
 import QtQuick
 import QtQuick.Controls
+import QtQuick.Layouts
 import QtQuick.Window
 
 ApplicationWindow {
@@ -8,6 +9,30 @@ ApplicationWindow {
     height: 480
     visible: true
     title: qsTr("Notepad")
+
+    header: ToolBar {
+        RowLayout {
+            id: toolBarLayout
+
+            Button {
+                id: fileButton
+                text: "File"
+                onClicked: fileMenu.open()
+
+                Menu {
+                    id: fileMenu
+                    y: fileButton.height
+
+                    MenuItem {
+                        text: "New"
+                    }
+                    MenuItem {
+                        text: "Open..."
+                    }
+                }
+            }
+        }
+    }
 
     Component.onCompleted: {
         width = Screen.width * 0.75
