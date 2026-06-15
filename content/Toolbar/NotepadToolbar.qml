@@ -6,13 +6,15 @@ import "Components"
 
 ToolBar {
     id: notepadToolbar
-
     height: 19
 
     RowLayout {
         id: toolBarLayout
 
-        anchors.fill: parent
+        spacing: 2
+
+        Layout.fillHeight: parent.height
+        Layout.fillWidth: parent.width
 
         ToolbarButton {
             id: fileButton
