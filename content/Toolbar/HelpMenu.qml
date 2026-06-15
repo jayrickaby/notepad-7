@@ -2,7 +2,6 @@ import QtQuick
 import QtQuick.Controls
 
 Menu {
-    id: helpMenu
     y: parent.height
 
     MenuItem {
