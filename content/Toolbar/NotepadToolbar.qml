@@ -2,12 +2,19 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 
+import "Components"
+
 ToolBar {
     id: notepadToolbar
+
+    height: 16
+
     RowLayout {
         id: toolBarLayout
 
-        Button {
+        anchors.fill: parent
+
+        ToolbarButton {
             id: fileButton
             text: "File"
             onClicked: fileMenu.open()
@@ -17,7 +24,7 @@ ToolBar {
             }
         }
 
-        Button {
+        ToolbarButton {
             id: editButton
             text: "Edit"
             onClicked: editMenu.open()
@@ -27,7 +34,7 @@ ToolBar {
             }
         }
 
-        Button {
+        ToolbarButton {
             id: formatButton
             text: "Format"
             onClicked: formatMenu.open()
@@ -37,7 +44,7 @@ ToolBar {
             }
         }
 
-        Button {
+        ToolbarButton {
             id: viewButton
             text: "View"
             onClicked: viewMenu.open()
@@ -47,7 +54,7 @@ ToolBar {
             }
         }
 
-        Button {
+        ToolbarButton {
             id: helpButton
             text: "Help"
             onClicked: helpMenu.open()
