@@ -29,4 +29,14 @@ Button {
 
         renderType: Text.NativeRendering
     }
+
+    background: BorderImage {
+        border.left: 3
+        border.right: 3
+        border.top: 3
+        border.bottom: 3
+
+        // Swap the image asset depending on whether the button is hovered or pressed
+        source: window.assetsUrl + "windows/menu/menuitem_hot.png"
+    }
 }
