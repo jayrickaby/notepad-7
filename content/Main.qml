@@ -19,37 +19,8 @@ ApplicationWindow {
                 text: "File"
                 onClicked: fileMenu.open()
 
-                Menu {
+                FileMenu {
                     id: fileMenu
-                    y: fileButton.height
-
-                    MenuItem {
-                        text: "New"
-                    }
-                    MenuItem {
-                        text: "Open..."
-                    }
-                    MenuItem {
-                        text: "Save"
-                    }
-                    MenuItem {
-                        text: "Save As..."
-                    }
-
-                    MenuSeparator { }
-
-                    MenuItem {
-                        text: "Page Setup..."
-                    }
-                    MenuItem {
-                        text: "Print..."
-                    }
-
-                    MenuSeparator { }
-
-                    MenuItem {
-                        text: "Exit"
-                    }
                 }
             }
         }
