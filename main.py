@@ -10,7 +10,7 @@ if __name__ == "__main__":
     app = QGuiApplication(sys.argv)
     engine = QQmlApplicationEngine()
     engine.addImportPath(Path(__file__).parent)
-    engine.loadFromModule("notepad_7", "Main")
+    engine.loadFromModule("content", "Main")
     if not engine.rootObjects():
         sys.exit(-1)
     sys.exit(app.exec())
