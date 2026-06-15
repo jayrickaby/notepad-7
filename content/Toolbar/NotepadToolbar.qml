@@ -8,6 +8,19 @@ ToolBar {
     id: notepadToolbar
     height: 19
 
+    leftPadding: 0
+    rightPadding: 0
+
+    BorderImage {
+        border.left: 1
+        border.right: 1
+        border.top: 1
+        border.bottom: 1
+
+        anchors.fill: parent
+        source: window.assetsUrl + "windows/menu/menubar_background.png"
+    }
+
     RowLayout {
         id: toolBarLayout
 
@@ -15,6 +28,10 @@ ToolBar {
 
         Layout.fillHeight: parent.height
         Layout.fillWidth: parent.width
+
+        anchors.left: parent.left
+
+        anchors.leftMargin: 6
 
         ToolbarButton {
             id: fileButton
