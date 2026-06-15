@@ -3,6 +3,8 @@ import QtQuick.Controls
 import QtQuick.Layouts
 import QtQuick.Window
 
+import "Toolbar"
+
 ApplicationWindow {
     id: window
     width: 640
