@@ -23,6 +23,16 @@ ApplicationWindow {
                     id: fileMenu
                 }
             }
+
+            Button {
+                id: editButton
+                text: "Edit"
+                onClicked: editMenu.open()
+
+                EditMenu {
+                    id: editMenu
+                }
+            }
         }
     }
 
