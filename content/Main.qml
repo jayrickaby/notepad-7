@@ -33,6 +33,36 @@ ApplicationWindow {
                     id: editMenu
                 }
             }
+
+            Button {
+                id: formatButton
+                text: "Format"
+                onClicked: formatMenu.open()
+
+                FormatMenu {
+                    id: formatMenu
+                }
+            }
+
+            Button {
+                id: viewButton
+                text: "View"
+                onClicked: viewMenu.open()
+
+                ViewMenu {
+                    id: viewMenu
+                }
+            }
+
+            Button {
+                id: helpButton
+                text: "Help"
+                onClicked: helpMenu.open()
+
+                HelpMenu {
+                    id: helpMenu
+                }
+            }
         }
     }
 
