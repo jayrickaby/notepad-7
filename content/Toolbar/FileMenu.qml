@@ -42,7 +42,7 @@ Menu {
         currentFolder: window.currentUrl
         nameFilters: ["Text Documents (*.txt)", "All Files"]
         onAccepted: {
-            let fileData = (toolbarBackend.openFile(selectedFile))
+            let fileData = (toolbarBackend.getFileData(selectedFile))
 
             if (fileData.name !== undefined) {
                 window.document.text = fileData.data

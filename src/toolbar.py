@@ -8,7 +8,7 @@ class NotepadToolbar(QObject):
         print("Toolbar loaded")
 
     @Slot(QUrl, result=dict)
-    def openFile(self, url):
+    def getFileData(self, url):
         localPath = url.toLocalFile()
         file = QFile(localPath)
         fileInfo = QFileInfo(file)
