@@ -46,7 +46,7 @@ Menu {
 
             if (fileData.name !== undefined) {
                 window.document.text = fileData.data
-                window.title = qsTr(fileData.name + " - Notepad")
+                window.setCurrentUrl(fileData.name)
             }
 
 
