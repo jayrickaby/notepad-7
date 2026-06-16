@@ -59,12 +59,14 @@ ApplicationWindow {
         document.text = data
     }
 
+    function getCurrentFileName() {
+        // Because of JS shenanigans, if currentFile is undefined or "", it is falsey
+        return currentFile || "Untitled"
+    }
+
     function updateTitle() {
-        var fileName = ""
+        var fileName = getCurrentFileName()
         var result = ""
-        if (currentFile === "" || currentFile === undefined) {
-            fileName = ("Untitled");
-        }
 
         result = (fileName + " - " + appTitle)
         console.log("Updating Title: \"" + result + "\"");
@@ -97,10 +99,7 @@ ApplicationWindow {
             return
         }
 
-        var fileName = currentFile
-        if (currentFile === "" || currentFile === undefined) {
-            fileName = "Untitled"
-        }
+        var fileName = getCurrentFileName()
 
         saveChangesMessage.text = "Do you want to save changes to " + fileName + "?"
         saveChangesMessage.open()
