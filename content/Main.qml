@@ -13,7 +13,7 @@ ApplicationWindow {
     readonly property url assetsUrl: Qt.resolvedUrl("../assets/")
     readonly property url documentsFolder: StandardPaths.writableLocation(StandardPaths.DocumentsLocation)
 
-    property url currentUrl: ""
+    property url currentUrl: documentsFolder
     property string appTitle: "Notepad–7"
 
     width: 640
@@ -57,7 +57,7 @@ ApplicationWindow {
     }
 
     function createNewFile() {
-        setCurrentUrl("")
+        //setCurrentUrl("")
         setDocumentText("")
         updateTitle("")
     }
@@ -72,6 +72,7 @@ ApplicationWindow {
         width = Screen.width * 0.75
         height = Screen.height * 0.75
 
-        updateTitle("")
+
+       createNewFile()
     }
 }
