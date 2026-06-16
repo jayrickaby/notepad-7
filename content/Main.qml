@@ -14,7 +14,8 @@ ApplicationWindow {
     readonly property url documentsFolder: StandardPaths.writableLocation(StandardPaths.DocumentsLocation)
 
     property alias document: documentElement
-    property url currentUrl: documentsFolder
+    property url currentUrl: ""
+
 
     width: 640
     height: 480

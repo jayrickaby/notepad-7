@@ -1,4 +1,4 @@
-from PySide6.QtCore import QObject, Signal, Slot, QFile, QIODevice, QUrl, QTextStream
+from PySide6.QtCore import QObject, Signal, Slot, QFile, QIODevice, QTextStream, QUrl
 
 class NotepadToolbar(QObject):
     # requestOpenFile = Signal(text)
@@ -7,17 +7,21 @@ class NotepadToolbar(QObject):
         super().__init__(parent)
         print("Toolbar loaded")
 
-    @Slot(QUrl, result=str)
+    @Slot(QUrl, result=dict)
     def openFile(self, url):
         localPath = url.toLocalFile()
         file = QFile(localPath)
 
         if not file.open(QIODevice.ReadOnly | QIODevice.Text):
             print(f"Failed to open file: {localPath}")
-            return ""
+            return {}
 
         textStream = QTextStream(file)
         content = textStream.readAll()
 
         file.close()
-        return content
+
+        return {
+            "name": file.fileName(),
+            "data": content
+        }
