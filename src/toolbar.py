@@ -5,7 +5,6 @@ class NotepadToolbar(QObject):
 
     def __init__(self, parent=None):
         super().__init__(parent)
-        print("Toolbar loaded")
 
     @Slot(QUrl, result=dict)
     def getFileData(self, url):
