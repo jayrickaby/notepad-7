@@ -56,6 +56,16 @@ ApplicationWindow {
         title = qsTr(result)
     }
 
+    function createNewFile() {
+        window.setCurrentUrl("")
+        window.setDocumentText("")
+    }
+
+    function loadFile(file) {
+        window.setCurrentUrl(file.name)
+        window.setDocumentText(file.data)
+    }
+
     Component.onCompleted: {
         width = Screen.width * 0.75
         height = Screen.height * 0.75

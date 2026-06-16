@@ -9,7 +9,7 @@ Menu {
         text: "New"
 
         onTriggered: {
-            createNewFile()``
+            window.createNewFile()
         }
     }
     MenuItem {
@@ -49,14 +49,8 @@ Menu {
             let fileData = (toolbarBackend.getFileData(selectedFile))
 
             if (fileData.name !== undefined) {
-                window.setCurrentUrl(fileData.name)
-                window.setDocumentText(fileData.data)
+                window.loadFile(fileData)
             }
         }
-    }
-
-    function createNewFile() {
-        window.setCurrentUrl("")
-        window.setDocumentText("")
     }
 }
