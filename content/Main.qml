@@ -1,5 +1,6 @@
 import QtQuick
 import QtQuick.Controls
+import QtQuick.Dialogs
 import QtQuick.Layouts
 import QtQuick.Window
 
@@ -20,8 +21,19 @@ ApplicationWindow {
 
     }
 
+    FileDialog {
+        id: openFileDialog
+    }
+
     TextEdit {
         anchors.fill: parent
+    }
+
+    Connections {
+        target: toolbarBackend
+        function onRequestOpenFile() {
+            openFileDialog.open()
+        }
     }
 
     Component.onCompleted: {
