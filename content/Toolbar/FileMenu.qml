@@ -9,6 +9,10 @@ Menu {
     }
     MenuItem {
         text: "Open..."
+
+        onTriggered: {
+            toolbarBackend.openFile()
+        }
     }
     MenuItem {
         text: "Save"
