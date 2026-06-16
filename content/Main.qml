@@ -13,10 +13,8 @@ ApplicationWindow {
     readonly property url assetsUrl: Qt.resolvedUrl("../assets/")
     readonly property url documentsFolder: StandardPaths.writableLocation(StandardPaths.DocumentsLocation)
 
-    property alias document: documentElement
     property url currentUrl: ""
     property string appTitle: "Notepad–7"
-
 
     width: 640
     height: 480
@@ -27,7 +25,7 @@ ApplicationWindow {
     }
 
     TextEdit {
-        id: documentElement
+        id: document
         anchors.fill: parent
     }
 
@@ -37,7 +35,7 @@ ApplicationWindow {
     }
 
     function setDocumentText(data) {
-        window.document.text = data
+        document.text = data
     }
 
     function updateTitle() {
@@ -57,13 +55,13 @@ ApplicationWindow {
     }
 
     function createNewFile() {
-        window.setCurrentUrl("")
-        window.setDocumentText("")
+        setCurrentUrl("")
+        setDocumentText("")
     }
 
     function loadFile(file) {
-        window.setCurrentUrl(file.name)
-        window.setDocumentText(file.data)
+        setCurrentUrl(file.name)
+        setDocumentText(file.data)
     }
 
     Component.onCompleted: {
