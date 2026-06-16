@@ -33,10 +33,10 @@ ApplicationWindow {
 
     function setCurrentUrl(newUrl) {
         currentUrl = newUrl
-        updateTitle(false)
+        updateTitle()
     }
 
-    function updateTitle(modified) {
+    function updateTitle() {
         var result = ""
         var fileName = ""
 
@@ -45,10 +45,6 @@ ApplicationWindow {
         }
         else {
             fileName = (currentUrl);
-        }
-
-        if (modified == true) {
-            fileName = ("*" + fileName)
         }
 
         result = (fileName + " - " + appTitle)
@@ -60,6 +56,6 @@ ApplicationWindow {
         width = Screen.width * 0.75
         height = Screen.height * 0.75
 
-        updateTitle(false)
+        updateTitle()
     }
 }
