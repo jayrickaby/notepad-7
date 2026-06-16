@@ -36,6 +36,10 @@ ApplicationWindow {
         updateTitle()
     }
 
+    function setDocumentText(data) {
+        window.document.text = data
+    }
+
     function updateTitle() {
         var result = ""
         var fileName = ""
