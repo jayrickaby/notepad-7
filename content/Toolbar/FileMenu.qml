@@ -1,5 +1,6 @@
 import QtQuick
 import QtQuick.Controls
+import QtQuick.Dialogs
 
 Menu {
     y: parent.height
@@ -11,7 +12,7 @@ Menu {
         text: "Open..."
 
         onTriggered: {
-            toolbarBackend.openFile()
+            openFileDialog.open()
         }
     }
     MenuItem {
@@ -34,5 +35,14 @@ Menu {
 
     MenuItem {
         text: "Exit"
+    }
+
+    FileDialog {
+        id: openFileDialog
+        currentFolder: window.currentUrl
+        nameFilters: ["Text Documents (*.txt)", "All Files"]
+        onAccepted: {
+            window.document.text = (toolbarBackend.openFile(selectedFile))
+        }
     }
 }

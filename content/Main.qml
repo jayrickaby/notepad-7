@@ -1,6 +1,6 @@
+import QtCore
 import QtQuick
 import QtQuick.Controls
-import QtQuick.Dialogs
 import QtQuick.Layouts
 import QtQuick.Window
 
@@ -11,6 +11,10 @@ ApplicationWindow {
 
     readonly property url baseUrl: Qt.resolvedUrl("../")
     readonly property url assetsUrl: Qt.resolvedUrl("../assets/")
+    readonly property url documentsFolder: StandardPaths.writableLocation(StandardPaths.DocumentsLocation)
+
+    property alias document: documentElement
+    property url currentUrl: documentsFolder
 
     width: 640
     height: 480
@@ -21,19 +25,9 @@ ApplicationWindow {
 
     }
 
-    FileDialog {
-        id: openFileDialog
-    }
-
     TextEdit {
+        id: documentElement
         anchors.fill: parent
-    }
-
-    Connections {
-        target: toolbarBackend
-        function onRequestOpenFile() {
-            openFileDialog.open()
-        }
     }
 
     Component.onCompleted: {
