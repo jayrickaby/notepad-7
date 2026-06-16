@@ -5,6 +5,7 @@ import QtQuick.Dialogs
 import QtQuick.Layouts
 import QtQuick.Window
 
+import "Document"
 import "Toolbar"
 
 ApplicationWindow {
@@ -18,7 +19,6 @@ ApplicationWindow {
     property url currentUrl: documentsFolder
     property string appTitle: "Notepad–7"
 
-    property bool modified: false
 
     width: 640
     height: 480
@@ -28,13 +28,9 @@ ApplicationWindow {
 
     }
 
-    TextEdit {
+    NotepadDocument {
         id: document
         anchors.fill: parent
-
-        onTextEdited: {
-            modified = true
-        }
     }
 
     MessageDialog {
@@ -49,14 +45,6 @@ ApplicationWindow {
 
     function setCurrentUrl(newUrl) {
         currentUrl = newUrl
-    }
-
-    function getDocumentText() {
-        return document.text
-    }
-
-    function setDocumentText(data) {
-        document.text = data
     }
 
     function getCurrentFileName() {
@@ -76,28 +64,32 @@ ApplicationWindow {
     function createNewFile() {
         //setCurrentUrl("")
         detectChanges()
-        setDocumentText("")
+        document.clearContents()
         updateTitle("")
     }
 
     function loadFile(file) {
         detectChanges()
         setCurrentUrl(Qt.resolvedUrl(file.path))
-        setDocumentText(file.data)
+        document.setContexts(file.data)
         updateTitle(file.name)
     }
 
     function saveFile() {
-        let data = getDocumentText()
+        let data = document.getContents()
         let path = getCurrentUrl()
         toolbarBackend.saveFileData(data, path)
-        modified = false
+        document.isModified = false
     }
 
     function detectChanges() {
-        if (!modified) {
+        console.log("Detecting Changes")
+        if (!document.isModified()) {
+            console.log("No changes detected.")
             return
         }
+
+        console.log("Changes detected!")
 
         let fileName = getCurrentFileName()
 
