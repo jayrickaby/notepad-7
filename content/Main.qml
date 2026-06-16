@@ -65,8 +65,8 @@ ApplicationWindow {
     }
 
     function updateTitle() {
-        var fileName = getCurrentFileName()
-        var result = ""
+        let fileName = getCurrentFileName()
+        let result = ""
 
         result = (fileName + " - " + appTitle)
         console.log("Updating Title: \"" + result + "\"");
@@ -88,8 +88,8 @@ ApplicationWindow {
     }
 
     function saveFile() {
-        var data = getDocumentText()
-        var path = getCurrentUrl()
+        let data = getDocumentText()
+        let path = getCurrentUrl()
         toolbarBackend.saveFileData(data, path)
         modified = false
     }
@@ -99,7 +99,7 @@ ApplicationWindow {
             return
         }
 
-        var fileName = getCurrentFileName()
+        let fileName = getCurrentFileName()
 
         saveChangesMessage.text = "Do you want to save changes to " + fileName + "?"
         saveChangesMessage.open()
