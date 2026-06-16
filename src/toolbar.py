@@ -24,5 +24,19 @@ class NotepadToolbar(QObject):
 
         return {
             "name": fileInfo.fileName(),
+            "path": fileInfo.absoluteFilePath(),
             "data": content
         }
+
+    @Slot(str,  QUrl)
+    def saveFileData(self, data, url):
+        localPath = url.toLocalFile()
+        file = QFile(localPath)
+
+        if file.open(QIODevice.OpenModeFlag.WriteOnly | QIODevice.OpenModeFlag.Text):
+            textStream = QTextStream(file)
+            textStream << data
+            file.close()
+            print("Wrote to: " + localPath)
+        else:
+            print("Failed to open path: " + file.errorString())

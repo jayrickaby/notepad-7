@@ -29,24 +29,26 @@ ApplicationWindow {
         anchors.fill: parent
     }
 
+    function getCurrentUrl() {
+        return currentUrl
+    }
+
     function setCurrentUrl(newUrl) {
         currentUrl = newUrl
-        updateTitle()
+    }
+
+    function getDocumentText() {
+        return document.text
     }
 
     function setDocumentText(data) {
         document.text = data
     }
 
-    function updateTitle() {
+    function updateTitle(fileName) {
         var result = ""
-        var fileName = ""
-
-        if (currentUrl == "") {
+        if (fileName == "") {
             fileName = ("Untitled");
-        }
-        else {
-            fileName = (currentUrl);
         }
 
         result = (fileName + " - " + appTitle)
@@ -57,11 +59,13 @@ ApplicationWindow {
     function createNewFile() {
         setCurrentUrl("")
         setDocumentText("")
+        updateTitle("")
     }
 
     function loadFile(file) {
-        setCurrentUrl(file.name)
+        setCurrentUrl(Qt.resolvedUrl(file.path))
         setDocumentText(file.data)
+        updateTitle(file.name)
     }
 
     Component.onCompleted: {

@@ -21,6 +21,12 @@ Menu {
     }
     MenuItem {
         text: "Save"
+
+        onTriggered: {
+            var data = window.getDocumentText()
+            var path = window.getCurrentUrl()
+            toolbarBackend.saveFileData(data, path)
+        }
     }
     MenuItem {
         text: "Save As..."
