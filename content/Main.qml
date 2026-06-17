@@ -60,30 +60,36 @@ ApplicationWindow {
         let result = ""
 
         result = (fileName + " - " + appTitle)
-        console.log("Updating Title: \"" + result + "\"");
+        console.log("Updated Title: \"" + result + "\"");
         title = qsTr(result)
     }
 
     function createNewFile() {
+        console.log("Creating new file...")
         detectChanges()
-        document.setSource("")
-        document.clearContents()
+        document.clearSource()
+        //document.clearContents()
         setCurrentFileName("")
         updateTitle()
+        console.log("New file created.")
     }
 
     function loadFile(file) {
+        console.log("Loading file: \"" + file.name + "\"...")
         detectChanges()
         document.setSource(Qt.resolvedUrl(file.path))
         setCurrentFileName(file.name)
         updateTitle()
+        console.log("Loaded file: \"" + file.name + "\".")
     }
 
     function saveFile() {
         let data = document.getContents()
         let path = getCurrentUrl()
+        console.log("Saving file to: \"" + path + "\"...")
         toolbarBackend.saveFileData(data, path)
         document.modified = false
+        console.log("Saved file to: \"" + path + "\".")
     }
 
     function detectChanges() {
