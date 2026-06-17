@@ -9,7 +9,7 @@ TextEdit {
     }
 
     function clearContents() {
-        text.clear
+        setContents("")
     }
 
     function getContents() {
