@@ -67,8 +67,7 @@ ApplicationWindow {
     function createNewFile() {
         console.log("Creating new file...")
         detectChanges()
-        document.clearSource()
-        //document.clearContents()
+        document.clear()
         setCurrentFileName("")
         updateTitle()
         console.log("New file created.")

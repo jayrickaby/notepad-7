@@ -24,10 +24,6 @@ TextEdit {
         return textDocument.source
     }
 
-    function clearSource() {
-        textDocument.source = ""
-    }
-
     function setSource(url) {
         textDocument.source = Qt.resolvedUrl(url)
     }
