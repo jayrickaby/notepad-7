@@ -71,7 +71,7 @@ ApplicationWindow {
     function loadFile(file) {
         detectChanges()
         setCurrentUrl(Qt.resolvedUrl(file.path))
-        document.setContexts(file.data)
+        document.setContents(file.data)
         updateTitle(file.name)
     }
 
