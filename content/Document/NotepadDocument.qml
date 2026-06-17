@@ -25,7 +25,10 @@ TextEdit {
     }
 
     function setSource(url) {
-        textDocument.source = Qt.resolvedUrl(url)
+        // FIXME: This is a horrible way to mitigate the currently possibly broken detectChanges() and resetting source. But, it works.
+        textDocument.modified = false
+        textDocument.source = url
+        console.log(textDocument.source)
     }
 
     function isModified() {
