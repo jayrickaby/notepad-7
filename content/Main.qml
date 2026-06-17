@@ -16,7 +16,6 @@ ApplicationWindow {
     readonly property url documentsFolder: StandardPaths.writableLocation(StandardPaths.DocumentsLocation)
 
     property string currentFile: ""
-    property url currentUrl: documentsFolder
     property string appTitle: "Notepad–7"
 
 
@@ -40,11 +39,11 @@ ApplicationWindow {
     }
 
     function getCurrentUrl() {
-        return currentUrl
+        return document.getSource() || documentsFolder
     }
 
     function setCurrentUrl(newUrl) {
-        currentUrl = newUrl
+        documents.setSource(documentsFolder)
     }
 
     function getCurrentFileName() {
@@ -66,8 +65,8 @@ ApplicationWindow {
     }
 
     function createNewFile() {
-        //setCurrentUrl("")
         detectChanges()
+        document.setSource("")
         document.clearContents()
         setCurrentFileName("")
         updateTitle()
@@ -75,8 +74,7 @@ ApplicationWindow {
 
     function loadFile(file) {
         detectChanges()
-        setCurrentUrl(Qt.resolvedUrl(file.path))
-        document.setContents(file.data)
+        document.setSource(Qt.resolvedUrl(file.path))
         setCurrentFileName(file.name)
         updateTitle()
     }
@@ -108,8 +106,6 @@ ApplicationWindow {
     Component.onCompleted: {
         width = Screen.width * 0.75
         height = Screen.height * 0.75
-
-
-       createNewFile()
+        createNewFile()
     }
 }

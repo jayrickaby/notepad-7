@@ -48,7 +48,7 @@ Menu {
     FileDialog {
         id: openFileDialog
         title: "Open"
-        currentFolder: window.currentUrl
+        currentFolder: window.getCurrentUrl()
         nameFilters: ["Text Documents (*.txt)", "All Files"]
         onAccepted: {
             let fileData = (toolbarBackend.getFileData(selectedFile))

@@ -20,6 +20,14 @@ TextEdit {
         text = data
     }
 
+    function getSource() {
+        return textDocument.source
+    }
+
+    function setSource(url) {
+        textDocument.source = Qt.resolvedUrl(url)
+    }
+
     function isModified() {
         return modified
     }
