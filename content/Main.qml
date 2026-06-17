@@ -52,6 +52,10 @@ ApplicationWindow {
         return currentFile || "Untitled"
     }
 
+    function setCurrentFileName(name) {
+        currentFile = name
+    }
+
     function updateTitle() {
         let fileName = getCurrentFileName()
         let result = ""
