@@ -2,30 +2,12 @@ import QtQuick
 
 
 TextEdit {
-    function clearContents() {
-        setContents("")
-    }
-
-    function getContents() {
-        return text
-    }
-
-    function setContents(data) {
-        text = data
-    }
-
-    function getSource() {
-        return textDocument.source
-    }
-
-    function setSource(url) {
-        // FIXME: This is a horrible way to mitigate the currently possibly broken detectChanges() and resetting source. But, it works.
+    function invokeCreate() {
+        console.log("Creating new file...")
         textDocument.modified = false
-        textDocument.source = url
+        clear()
+        textDocument.source = ""
         console.log(textDocument.source)
-    }
-
-    function isModified() {
-        return textDocument.modified
+        console.log("Created new file.")
     }
 }
