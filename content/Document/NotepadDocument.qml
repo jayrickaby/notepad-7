@@ -2,12 +2,6 @@ import QtQuick
 
 
 TextEdit {
-    property bool modified: false
-
-    onTextEdited: {
-        modified = true
-    }
-
     function clearContents() {
         setContents("")
     }
@@ -32,6 +26,6 @@ TextEdit {
     }
 
     function isModified() {
-        return modified
+        return textDocument.modified
     }
 }
