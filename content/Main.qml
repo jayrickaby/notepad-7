@@ -69,14 +69,16 @@ ApplicationWindow {
         //setCurrentUrl("")
         detectChanges()
         document.clearContents()
-        updateTitle("")
+        setCurrentFileName("")
+        updateTitle()
     }
 
     function loadFile(file) {
         detectChanges()
         setCurrentUrl(Qt.resolvedUrl(file.path))
         document.setContents(file.data)
-        updateTitle(file.name)
+        setCurrentFileName(file.name)
+        updateTitle()
     }
 
     function saveFile() {
