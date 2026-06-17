@@ -85,7 +85,7 @@ ApplicationWindow {
         let data = document.getContents()
         let path = getCurrentUrl()
         toolbarBackend.saveFileData(data, path)
-        document.isModified = false
+        document.modified = false
     }
 
     function detectChanges() {
