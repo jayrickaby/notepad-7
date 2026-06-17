@@ -65,6 +65,7 @@ ApplicationWindow {
     }
 
     function createNewFile() {
+        // TODO: Refactor this mess
         console.log("Creating new file...")
         detectChanges()
         document.clear()
