@@ -47,6 +47,7 @@ Menu {
 
     FileDialog {
         id: openFileDialog
+        title: "Open"
         currentFolder: window.currentUrl
         nameFilters: ["Text Documents (*.txt)", "All Files"]
         onAccepted: {
