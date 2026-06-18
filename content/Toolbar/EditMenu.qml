@@ -2,7 +2,7 @@ import QtQuick
 import QtQuick.Controls
 
 Menu {
-    y: fileButton.height
+    title: qsTr("&Edit")
 
     MenuItem {
         text: "Undo"

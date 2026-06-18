@@ -2,25 +2,23 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 
-Button {
+MenuBarItem {
+    id: control
     readonly property url backgroundHot: window.assetsUrl + "windows/menu/menuitem_hot.png"
     readonly property url backgroundPushed: window.assetsUrl + "windows/menu/menuitem_pushed.png"
 
-    Layout.preferredHeight: 18
-    Layout.preferredWidth: contentItem.implicitWidth + (6 * 2)
-    Layout.alignment: Qt.AlignBottom
-
+    implicitHeight: 18
+    implicitWidth: contentItem.implicitWidth + (6 * 2)
 
     //font.letterSpacing: 0.05
-    // Explicitly set 9 or else it is slightly too big
+    //Explicitly set 9 or else it is slightly too big
     font.pointSize: 9
-
     font.hintingPreference: Font.PreferFullHinting
 
     // Override so its similar to windows font rendering
     contentItem: Text {
-        text: parent.text
-        font: parent.font
+        text: control.text
+        font: control.font
 
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
@@ -41,10 +39,10 @@ Button {
 
         // Swap the image asset depending on whether the button is hovered or pressed
         source: {
-            if (pressed) {
+            if (control.pressed) {
                 return backgroundPushed
             }
-            if (hovered) {
+            if (control.highlighted) {
                 return backgroundHot
             }
             return ""

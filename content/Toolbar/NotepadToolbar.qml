@@ -4,7 +4,7 @@ import QtQuick.Layouts
 
 import "Components"
 
-ToolBar {
+MenuBar {
     id: notepadToolbar
     height: 19
 
@@ -14,16 +14,15 @@ ToolBar {
     leftPadding: 0
     rightPadding: 0
 
-    BorderImage {
+    delegate: ToolbarButton {}
+
+    background: BorderImage {
         border.left: 1
         border.right: 1
         border.top: 1
         border.bottom: 1
 
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.bottom: parent.bottom
-        anchors.top: parent.top
+        anchors.fill : parent
 
         // This ensures that the menubar gradient is correctly aligned
         anchors.topMargin: -1
@@ -31,66 +30,12 @@ ToolBar {
         source: window.assetsUrl + "windows/menu/menubar.png"
     }
 
-    RowLayout {
-        id: toolBarLayout
+    spacing: 2
 
-        spacing: 2
+    FileMenu {}
+    EditMenu {}
+    FormatMenu {}
+    HelpMenu {}
+    ViewMenu {}
 
-        Layout.fillHeight: parent.height
-        Layout.fillWidth: parent.width
-
-        anchors.left: parent.left
-
-        anchors.leftMargin: 1
-
-        ToolbarButton {
-            id: fileButton
-            text: "File"
-            onClicked: fileMenu.open()
-
-            FileMenu {
-                id: fileMenu
-            }
-        }
-
-        ToolbarButton {
-            id: editButton
-            text: "Edit"
-            onClicked: editMenu.open()
-
-            EditMenu {
-                id: editMenu
-            }
-        }
-
-        ToolbarButton {
-            id: formatButton
-            text: "Format"
-            onClicked: formatMenu.open()
-
-            FormatMenu {
-                id: formatMenu
-            }
-        }
-
-        ToolbarButton {
-            id: viewButton
-            text: "View"
-            onClicked: viewMenu.open()
-
-            ViewMenu {
-                id: viewMenu
-            }
-        }
-
-        ToolbarButton {
-            id: helpButton
-            text: "Help"
-            onClicked: helpMenu.open()
-
-            HelpMenu {
-                id: helpMenu
-            }
-        }
-    }
 }

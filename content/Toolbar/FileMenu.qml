@@ -3,6 +3,7 @@ import QtQuick.Controls
 import QtQuick.Dialogs
 
 Menu {
+    title: qsTr("&File")
     y: parent.height
 
     MenuItem {
