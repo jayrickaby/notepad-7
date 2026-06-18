@@ -1,0 +1,3 @@
+module Aero7
+import QtQuick.Controls.Fusion auto
+MenuBar 2.0 MenuBar.qml

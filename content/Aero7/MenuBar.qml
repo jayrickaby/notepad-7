@@ -1,10 +1,7 @@
 import QtQuick
-import QtQuick.Controls
-import QtQuick.Layouts
+import QtQuick.Templates as T
 
-import "Components"
-
-MenuBar {
+T.MenuBar {
     height: 19
 
     // This offsets buttons 1px down
@@ -12,8 +9,6 @@ MenuBar {
     bottomPadding: 0
     leftPadding: 0
     rightPadding: 0
-
-    delegate: ToolbarButton {}
 
     background: BorderImage {
         border.left: 1
@@ -26,15 +21,8 @@ MenuBar {
         // This ensures that the menubar gradient is correctly aligned
         anchors.topMargin: -1
 
-        source: window.assetsUrl + "windows/menu/menubar.png"
+        source: Qt.resolvedUrl("assets/windows/menu/menubar.png")
     }
 
     spacing: 2
-
-    FileMenu {}
-    EditMenu {}
-    FormatMenu {}
-    HelpMenu {}
-    ViewMenu {}
-
 }

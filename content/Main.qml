@@ -12,18 +12,21 @@ ApplicationWindow {
     id: window
 
     readonly property url baseUrl: Qt.resolvedUrl("../")
-    readonly property url assetsUrl: Qt.resolvedUrl("../assets/")
+    readonly property url assetsUrl: Qt.resolvedUrl("../content/Aero7/assets/")
     readonly property url documentsFolder: StandardPaths.writableLocation(StandardPaths.DocumentsLocation)
 
     property string appTitle: "Notepad–7"
-
-
+    
     width: 640
     height: 480
     visible: true
 
-    header: NotepadMenuBar {
-
+    header: MenuBar {
+        FileMenu {}
+        EditMenu {}
+        FormatMenu {}
+        HelpMenu {}
+        ViewMenu {}
     }
 
     NotepadDocument {
