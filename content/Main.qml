@@ -16,7 +16,7 @@ ApplicationWindow {
     readonly property url documentsFolder: StandardPaths.writableLocation(StandardPaths.DocumentsLocation)
 
     property string appTitle: "Notepad–7"
-    
+
     width: 640
     height: 480
     visible: true

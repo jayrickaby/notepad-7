@@ -10,6 +10,17 @@ T.MenuBar {
     leftPadding: 0
     rightPadding: 0
 
+    // Taken from "src/quickcontrols/fusion/MenuBar.qml"
+    delegate: MenuBarItem { }
+
+    contentItem: Row {
+        spacing: control.spacing
+        Repeater {
+            model: control.contentModel
+        }
+    }
+    // End copy
+
     background: BorderImage {
         border.left: 1
         border.right: 1
