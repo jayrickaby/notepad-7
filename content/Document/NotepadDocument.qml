@@ -26,7 +26,6 @@ TextEdit {
         }
         else {
             textDocument.save()
-            resetDocument()
         }
         // Sometimes it doesn't change
         //textDocument.modified = false
@@ -60,6 +59,7 @@ TextEdit {
             switch (button) {
                 case MessageDialog.Save:
                     invokeSave()
+                    resetDocument()
                     break
                 case MessageDialog.Discard:
                     resetDocument()
@@ -75,7 +75,6 @@ TextEdit {
         fileMode: FileDialog.SaveFile
         onAccepted: {
             textDocument.saveAs(selectedFile)
-            resetDocument()
         }
     }
 }
