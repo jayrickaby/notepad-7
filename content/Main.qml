@@ -41,6 +41,10 @@ ApplicationWindow {
         document.invokeCreate()
     }
 
+    function saveCurrentFile() {
+        document.invokeSave()
+    }
+
 
 
     Component.onCompleted: {

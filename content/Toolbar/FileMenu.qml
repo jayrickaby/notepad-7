@@ -23,7 +23,7 @@ Menu {
         text: "Save"
 
         onTriggered: {
-            window.saveFile()
+            window.saveCurrentFile()
         }
     }
     MenuItem {
