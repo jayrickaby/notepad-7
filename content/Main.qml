@@ -45,6 +45,10 @@ ApplicationWindow {
         document.invokeSave()
     }
 
+    function loadFile() {
+        document.invokeLoad()
+    }
+
 
 
     Component.onCompleted: {

@@ -23,9 +23,18 @@ TextEdit {
         else {
             textDocument.save()
         }
-        // Sometimes it doesn't change
-        //textDocument.modified = false
         console.log("Invoked save.")
+    }
+
+    function invokeLoad(url) {
+        console.log("Invoking load...")
+        if (isModified()) {
+        // FIXME: This doesn't continue when it should be
+            console.log("Prompting to save current file...")
+            promptSave()
+            return
+        }
+        loadFileLocationDialog.open()
     }
 
     function resetDocument() {
@@ -46,6 +55,10 @@ TextEdit {
         console.log("Prompted to save current file.")
     }
 
+    function load(url) {
+        textDocument.source = url
+    }
+
     MessageDialog {
         id: saveFilePrompt
         buttons: MessageDialog.Save | MessageDialog.Discard | MessageDialog.Cancel
@@ -58,6 +71,8 @@ TextEdit {
                     resetDocument()
                     break
                 case MessageDialog.Discard:
+                    // Won't change source otherwise
+                    textDocument.modified = false
                     resetDocument()
                     break
             }
@@ -73,4 +88,13 @@ TextEdit {
             textDocument.saveAs(selectedFile)
         }
     }
+
+    FileDialog {
+        id: loadFileLocationDialog
+        nameFilters: ["Text Documents (*.txt)", "All Files"]
+        onAccepted: {
+            load(selectedFile)
+        }
+    }
+
 }

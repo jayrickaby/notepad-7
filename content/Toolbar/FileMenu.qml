@@ -16,7 +16,7 @@ Menu {
         text: "Open..."
 
         onTriggered: {
-            openFileDialog.open()
+            window.loadFile()
         }
     }
     MenuItem {
