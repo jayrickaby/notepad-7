@@ -47,5 +47,9 @@ Menu {
 
     MenuItem {
         text: "Exit"
+
+        onTriggered: {
+            window.close()
+        }
     }
 }
