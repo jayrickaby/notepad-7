@@ -53,11 +53,15 @@ ApplicationWindow {
         document.invokeLoad()
     }
 
-
+    function updateTitle(filename) {
+        console.log("Updating title with: \"" + filename + "\"")
+        title = (filename + " - " + appTitle)
+    }
 
     Component.onCompleted: {
         width = Screen.width * 0.75
         height = Screen.height * 0.75
         createNewFile()
+        updateTitle(document.getFormalFileName())
     }
 }

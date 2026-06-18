@@ -69,6 +69,14 @@ TextEdit {
         })
     }
 
+    function getFormalFileName() {
+        if (textDocument.source === Qt.resolvedUrl("")) {
+            return "Untitled"
+        }
+        var filename = textDocument.source.toString().split('/').pop()
+        return filename
+    }
+
     MessageDialog {
         id: saveFilePrompt
         buttons: MessageDialog.Save | MessageDialog.Discard | MessageDialog.Cancel
@@ -116,4 +124,9 @@ TextEdit {
         }
     }
 
+    textDocument.onStatusChanged: {
+            console.log("Document status: " + textDocument.status)
+        if (textDocument.status === TextDocument.Loaded)
+            window.updateTitle(getFormalFileName())
+    }
 }
