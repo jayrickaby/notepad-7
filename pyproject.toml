@@ -10,7 +10,7 @@ files = [
     "content/Toolbar/FileMenu.qml",
     "content/Toolbar/FormatMenu.qml",
     "content/Toolbar/HelpMenu.qml",
-    "content/Toolbar/NotepadToolbar.qml",
+    "content/Toolbar/NotepadMenuBar.qml",
     "content/Toolbar/ViewMenu.qml",
     "main.py",
     "src/toolbar.py"

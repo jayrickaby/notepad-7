@@ -2,7 +2,7 @@ import QtQuick
 import QtQuick.Dialogs
 
 TextEdit {
-        property var pendingOperation: null
+    property var pendingOperation: null
 
     function invokeCreate() {
         console.log("Creating new file...")

@@ -22,7 +22,7 @@ ApplicationWindow {
     height: 480
     visible: true
 
-    header: NotepadToolbar {
+    header: NotepadMenuBar {
 
     }
 

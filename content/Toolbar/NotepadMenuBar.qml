@@ -5,7 +5,6 @@ import QtQuick.Layouts
 import "Components"
 
 MenuBar {
-    id: notepadToolbar
     height: 19
 
     // This offsets buttons 1px down
