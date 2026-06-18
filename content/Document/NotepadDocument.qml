@@ -20,8 +20,7 @@ TextEdit {
 
     function invokeSave() {
         console.log("Invoking save...")
-        if (textDocument.source === "" || textDocument.source === undefined) {
-            // FIXME: Why aren't I happening??
+        if (textDocument.source === Qt.resolvedUrl("")) {
             console.log("Prompting save file location...")
             saveFileLocationDialog.open()
         }
@@ -29,13 +28,18 @@ TextEdit {
             textDocument.save()
             resetDocument()
         }
+        // Sometimes it doesn't change
+        //textDocument.modified = false
         console.log("Invoked save.")
     }
 
     function resetDocument() {
-        clear()
+        // Source reset first as clear() triggers modified state
         textDocument.source = ""
-        textDocument.text = ""
+        clear()
+
+        // Directly override due to above
+        textDocument.modified = false
     }
     function isModified() {
         console.log("Current file is modified.")
@@ -66,6 +70,7 @@ TextEdit {
 
     FileDialog {
         id: saveFileLocationDialog
+        // FIXME: Why not saving at txt?
         nameFilters: ["Text Documents (*.txt)", "All Files"]
         fileMode: FileDialog.SaveFile
         onAccepted: {
