@@ -2,12 +2,8 @@ import QtQuick
 import QtQuick.Dialogs
 
 TextEdit {
-    property bool cancelOperation: false
-
     function invokeCreate() {
         console.log("Creating new file...")
-
-        cancelOperation = false
 
         if (isModified()) {
             console.log("Prompting to save current file...")
