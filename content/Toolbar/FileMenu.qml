@@ -28,6 +28,10 @@ Menu {
     }
     MenuItem {
         text: "Save As..."
+
+        onTriggered: {
+            window.saveCurrentFileAs()
+        }
     }
 
     MenuSeparator { }

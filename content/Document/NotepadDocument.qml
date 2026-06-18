@@ -16,12 +16,16 @@ TextEdit {
         console.log("Invoking save...")
         if (textDocument.source === Qt.resolvedUrl("")) {
             console.log("Prompting save file location...")
-            saveFileLocationDialog.open()
+            invokeSaveAs()
         }
         else {
             textDocument.save()
         }
         console.log("Invoked save.")
+    }
+
+    function invokeSaveAs() {
+        saveFileLocationDialog.open()
     }
 
     function invokeLoad() {

@@ -45,6 +45,10 @@ ApplicationWindow {
         document.invokeSave()
     }
 
+    function saveCurrentFileAs() {
+        document.invokeSaveAs()
+    }
+
     function loadFile() {
         document.invokeLoad()
     }
