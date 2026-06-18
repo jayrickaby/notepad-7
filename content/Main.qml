@@ -22,6 +22,8 @@ ApplicationWindow {
     visible: true
 
     header: MenuBar {
+        height: 19
+
         FileMenu {}
         EditMenu {}
         FormatMenu {}
