@@ -1,12 +1,11 @@
 import QtQuick
-import QtQuick.Controls
+import QtQuick.Templates as T
 import QtQuick.Controls.impl
-import QtQuick.Layouts
 
-MenuBarItem {
+T.MenuBarItem {
     id: control
-    readonly property url backgroundHot: window.assetsUrl + "windows/menu/menuitem_hot.png"
-    readonly property url backgroundPushed: window.assetsUrl + "windows/menu/menuitem_pushed.png"
+    readonly property url backgroundHot: Qt.resolvedUrl("assets/windows/menu/menuitem_hot.png")
+    readonly property url backgroundPushed: Qt.resolvedUrl("assets/windows/menu/menuitem_pushed.png")
 
     implicitHeight: 18
     implicitWidth: contentItem.implicitWidth + (6 * 2)

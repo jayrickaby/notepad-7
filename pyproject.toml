@@ -5,7 +5,7 @@ name = "PySide QtQuick Project"
 files = [
     "content/Document/NotepadDocument.qml",
     "content/Main.qml",
-    "content/Toolbar/Components/ToolbarButton.qml",
+    "content/Toolbar/Components/MenuBarItem.qml",
     "content/Toolbar/EditMenu.qml",
     "content/Toolbar/FileMenu.qml",
     "content/Toolbar/FormatMenu.qml",
