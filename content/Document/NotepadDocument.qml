@@ -2,16 +2,14 @@ import QtQuick
 import QtQuick.Dialogs
 
 TextEdit {
+        property var pendingOperation: null
+
     function invokeCreate() {
         console.log("Creating new file...")
 
-        if (isModified()) {
-            console.log("Prompting to save current file...")
-            promptSave()
-            return
-        }
-
-        resetDocument()
+        handleChanges(function() {
+            resetDocument()
+        })
     }
 
     function invokeSave() {
@@ -26,20 +24,25 @@ TextEdit {
         console.log("Invoked save.")
     }
 
-    function invokeLoad(url) {
+    function invokeLoad() {
         console.log("Invoking load...")
-        if (isModified()) {
-        // FIXME: This doesn't continue when it should be
-            console.log("Prompting to save current file...")
-            promptSave()
+        loadFileLocationDialog.open()
+    }
+
+    function handleChanges(callback) {
+        if (!isModified()) {
+            callback()
             return
         }
-        loadFileLocationDialog.open()
+
+        console.log("Prompting to save \"" + textDocument.source + "\"...")
+        pendingOperation = callback
+        promptSave()
     }
 
     function resetDocument() {
         // Source reset first as clear() triggers modified state
-        textDocument.source = ""
+        textDocument.source = Qt.resolvedUrl("")
         clear()
 
         // Directly override due to above
@@ -56,7 +59,10 @@ TextEdit {
     }
 
     function load(url) {
-        textDocument.source = url
+        handleChanges(function() {
+            console.log(url)
+            textDocument.source = url
+        })
     }
 
     MessageDialog {
@@ -66,21 +72,29 @@ TextEdit {
 
         onButtonClicked: function(button, role) {
             switch (button) {
-                case MessageDialog.Save:
-                    invokeSave()
-                    resetDocument()
-                    break
-                case MessageDialog.Discard:
-                    // Won't change source otherwise
-                    textDocument.modified = false
-                    resetDocument()
-                    break
+            case MessageDialog.Save:
+                invokeSave()
+                break
+            case MessageDialog.Discard:
+                // Won't change source otherwise
+                textDocument.modified = false
+                break
+            case MessageDialog.Cancel:
+                pendingOperation = null
+                break
+            }
+
+            if (pendingOperation) {
+                let operation = pendingOperation
+                pendingOperation = null
+                operation()
             }
         }
     }
 
     FileDialog {
         id: saveFileLocationDialog
+        title: "save"
         defaultSuffix: "txt"
         nameFilters: ["Text Documents (*.txt)", "All Files"]
         fileMode: FileDialog.SaveFile
@@ -91,6 +105,7 @@ TextEdit {
 
     FileDialog {
         id: loadFileLocationDialog
+        title: "load"
         nameFilters: ["Text Documents (*.txt)", "All Files"]
         onAccepted: {
             load(selectedFile)
