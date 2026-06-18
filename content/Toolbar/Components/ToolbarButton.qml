@@ -1,5 +1,6 @@
 import QtQuick
 import QtQuick.Controls
+import QtQuick.Controls.impl
 import QtQuick.Layouts
 
 MenuBarItem {
@@ -16,19 +17,22 @@ MenuBarItem {
     font.hintingPreference: Font.PreferFullHinting
 
     // Override so its similar to windows font rendering
-    contentItem: Text {
+    // TODO: Replace with custom.
+    contentItem: IconLabel {
         text: control.text
+
         font: control.font
 
-        horizontalAlignment: Text.AlignHCenter
-        verticalAlignment: Text.AlignVCenter
+        //textFormat: Text.StyledText
+
+        alignment: Text.AlignHCenter
+        //verticalAlignment: Text.AlignVCenter
 
         // Text is 1 px above V center in Notepad
         topPadding: -1
         bottomPadding: 1
 
-
-        renderType: Text.NativeRendering
+        //renderType: Text.NativeRendering
     }
 
     background: BorderImage {
