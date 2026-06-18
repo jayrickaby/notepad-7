@@ -48,18 +48,4 @@ Menu {
     MenuItem {
         text: "Exit"
     }
-
-    FileDialog {
-        id: openFileDialog
-        title: "Open"
-        currentFolder: window.getCurrentUrl()
-        nameFilters: ["Text Documents (*.txt)", "All Files"]
-        onAccepted: {
-            let fileData = (toolbarBackend.getFileData(selectedFile))
-
-            if (fileData.name !== undefined) {
-                window.loadFile(fileData)
-            }
-        }
-    }
 }
