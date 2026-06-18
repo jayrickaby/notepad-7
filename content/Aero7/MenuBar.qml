@@ -2,6 +2,7 @@ import QtQuick
 import QtQuick.Templates as T
 
 T.MenuBar {
+    id: control
     height: 19
 
     // This offsets buttons 1px down
