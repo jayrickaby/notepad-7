@@ -70,7 +70,7 @@ TextEdit {
 
     FileDialog {
         id: saveFileLocationDialog
-        // FIXME: Why not saving at txt?
+        defaultSuffix: "txt"
         nameFilters: ["Text Documents (*.txt)", "All Files"]
         fileMode: FileDialog.SaveFile
         onAccepted: {
