@@ -3,7 +3,6 @@ import QtQuick.Controls
 import QtQuick.Layouts
 
 Button {
-    id: toolbarButton
     readonly property url backgroundHot: window.assetsUrl + "windows/menu/menuitem_hot.png"
     readonly property url backgroundPushed: window.assetsUrl + "windows/menu/menuitem_pushed.png"
 
@@ -42,10 +41,10 @@ Button {
 
         // Swap the image asset depending on whether the button is hovered or pressed
         source: {
-            if (toolbarButton.pressed) {
+            if (pressed) {
                 return backgroundPushed
             }
-            if (toolbarButton.hovered) {
+            if (hovered) {
                 return backgroundHot
             }
             return ""
