@@ -124,9 +124,8 @@ TextEdit {
         }
     }
 
-    textDocument.onStatusChanged: {
-            console.log("Document status: " + textDocument.status)
-        if (textDocument.status === TextDocument.Loaded)
-            window.updateTitle(getFormalFileName())
+    textDocument.onSourceChanged: {
+        console.log("Source changed to \"" + textDocument.source + "\"")
+        window.updateTitle(getFormalFileName())
     }
 }
