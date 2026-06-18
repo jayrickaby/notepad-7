@@ -2,4 +2,16 @@
 name = "PySide QtQuick Project"
 
 [tool.pyside6-project]
-files = ["main.py", "notepad_7/Main.qml", "notepad_7/qmldir"]
+files = [
+    "content/Document/NotepadDocument.qml",
+    "content/Main.qml",
+    "content/Toolbar/Components/ToolbarButton.qml",
+    "content/Toolbar/EditMenu.qml",
+    "content/Toolbar/FileMenu.qml",
+    "content/Toolbar/FormatMenu.qml",
+    "content/Toolbar/HelpMenu.qml",
+    "content/Toolbar/NotepadToolbar.qml",
+    "content/Toolbar/ViewMenu.qml",
+    "main.py",
+    "src/toolbar.py"
+]
