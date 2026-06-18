@@ -14,13 +14,9 @@ TextEdit {
 
     function invokeSave() {
         console.log("Invoking save...")
-        if (textDocument.source === Qt.resolvedUrl("")) {
-            console.log("Prompting save file location...")
-            invokeSaveAs()
-        }
-        else {
-            textDocument.save()
-        }
+
+        textDocument.save()
+
         console.log("Invoked save.")
     }
 
@@ -84,23 +80,31 @@ TextEdit {
 
         onButtonClicked: function(button, role) {
             switch (button) {
-            case MessageDialog.Save:
-                invokeSave()
-                break
-            case MessageDialog.Discard:
-                // Won't change source otherwise
-                textDocument.modified = false
-                break
-            case MessageDialog.Cancel:
-                pendingOperation = null
-                break
+                case MessageDialog.Save:
+                    if (textDocument.source === Qt.resolvedUrl("")) {
+                        console.log("Prompting save file location...")
+                        invokeSaveAs()
+                        return
+                    }
+                    invokeSave()
+                    break
+                case MessageDialog.Discard:
+                    // Won't change source otherwise
+                    textDocument.modified = false
+                    break
+                case MessageDialog.Cancel:
+                    pendingOperation = null
+                    break
             }
+            handlePendingOperation()
+        }
+    }
 
-            if (pendingOperation) {
-                let operation = pendingOperation
-                pendingOperation = null
-                operation()
-            }
+    function handlePendingOperation() {
+        if (pendingOperation) {
+            let operation = pendingOperation
+            pendingOperation = null
+            operation()
         }
     }
 
@@ -112,6 +116,10 @@ TextEdit {
         fileMode: FileDialog.SaveFile
         onAccepted: {
             textDocument.saveAs(selectedFile)
+            handlePendingOperation()
+        }
+        onRejected: {
+            pendingOperation = null
         }
     }
 

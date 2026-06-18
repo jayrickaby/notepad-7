@@ -64,4 +64,17 @@ ApplicationWindow {
         createNewFile()
         updateTitle(document.getFormalFileName())
     }
+
+    onClosing: (close) => {
+        console.log("Closing...")
+        if (!document.isModified()) {
+            close.accepted = true
+            return
+
+        }
+        close.accepted = false
+        document.handleChanges(function() {
+            window.close()
+        })
+    }
 }
