@@ -4,8 +4,8 @@ import QtQuick.Controls.impl
 
 T.MenuBarItem {
     id: control
-    readonly property url backgroundHot: Qt.resolvedUrl("assets/windows/menu/menuitem_hot.png")
-    readonly property url backgroundPushed: Qt.resolvedUrl("assets/windows/menu/menuitem_pushed.png")
+    readonly property url backgroundHot: Qt.resolvedUrl("assets/windows/menu/menubaritem_hot.png")
+    readonly property url backgroundPushed: Qt.resolvedUrl("assets/windows/menu/menubaritem_pushed.png")
 
     implicitHeight: parent.height
     implicitWidth: contentItem.implicitWidth + (6 * 2)

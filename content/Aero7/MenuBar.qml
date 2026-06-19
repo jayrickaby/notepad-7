@@ -32,7 +32,7 @@ T.MenuBar {
         // This ensures that the menubar gradient is correctly aligned
         anchors.topMargin: -1
 
-        source: Qt.resolvedUrl("assets/windows/menu/menubar.png")
+        source: Qt.resolvedUrl("assets/windows/menu/menubar_background.png")
     }
 
     spacing: 2
