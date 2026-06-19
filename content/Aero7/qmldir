@@ -2,3 +2,4 @@ module Aero7
 import QtQuick.Controls.Fusion auto
 MenuBar 2.0 MenuBar.qml
 MenuBarItem 2.0 MenuBarItem.qml
+Menu 2.0 Menu.qml
