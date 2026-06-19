@@ -17,7 +17,6 @@ T.Menu {
     margins: 0
     horizontalPadding: 3
     verticalPadding: 3
-    //overlap: 2
 
     delegate: MenuItem { }
 
@@ -50,5 +49,9 @@ T.Menu {
 
             source: Qt.resolvedUrl("assets/windows/menu/menu_background.png")
         }
+    }
+
+    onOpened: {
+        x = -1
     }
 }
