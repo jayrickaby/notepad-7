@@ -36,24 +36,16 @@ T.Menu {
         implicitWidth: 200
         implicitHeight: 20
 
-        color: control.palette.base
-        border.color: Fusion.outline(control.palette)
+        BorderImage {
+            anchors.fill: parent
 
-        Rectangle {
-            z: -1
-            x: 1; y: 1
-            width: parent.width
-            height: parent.height
-            color: control.palette.shadow
-            opacity: 0.2
+            border.left: 1
+            border.right: 1
+            border.top: 1
+            border.bottom: 1
+
+
+            source: Qt.resolvedUrl("assets/windows/menu/menu_background.png")
         }
-    }
-
-    T.Overlay.modal: Rectangle {
-        color: Fusion.topShadow
-    }
-
-    T.Overlay.modeless: Rectangle {
-        color: Fusion.topShadow
     }
 }
