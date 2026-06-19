@@ -21,27 +21,43 @@ T.MenuItem {
     //                          implicitIndicatorHeight + topPadding + bottomPadding)
     implicitHeight: 22
 
-    padding: 6
-    spacing: 6
+    padding: 0
+    spacing: 0
 
     icon.width: 16
     icon.height: 16
 
-    contentItem: IconLabel {
-        readonly property real arrowPadding: control.subMenu && control.arrow ? control.arrow.width + control.spacing : 0
-        readonly property real indicatorPadding: control.checkable && control.indicator ? control.indicator.width + control.spacing : 0
-        leftPadding: !control.mirrored ? indicatorPadding : arrowPadding
-        rightPadding: control.mirrored ? indicatorPadding : arrowPadding
+    contentItem: Item {
+        width: control.availableWidth
+        height: control.availableHeight
 
-        spacing: control.spacing
-        mirrored: control.mirrored
-        display: control.display
-        alignment: Qt.AlignLeft
+        Item {
+            id: iconArea
+            width: 22
+            height: 22
+            anchors.left: parent.left
+            anchors.verticalCenter: parent.verticalCenter
 
-        icon: control.icon
-        text: control.text
-        font: control.font
-        color: control.down || control.highlighted ? Fusion.highlightedText(control.palette) : control.palette.text
+            Image {
+                anchors.centerIn: parent
+                source: control.icon.source
+                width: control.icon.width
+                height: control.icon.height
+                visible: control.icon.source.toString() !== ""
+            }
+
+            Text {
+                id: labelText
+                text: control.text
+                font: control.font
+                color: control.down || control.highlighted ? Fusion.highlightedText(control.palette) : control.palette.text
+
+                anchors.left: iconArea.right
+                anchors.leftMargin: 10 // 4px space + 2px line + 4px space
+                anchors.verticalCenter: parent.verticalCenter
+                elide: Text.ElideRight
+            }
+        }
     }
 
     arrow: ColorImage {
