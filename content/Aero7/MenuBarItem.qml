@@ -7,7 +7,7 @@ T.MenuBarItem {
     readonly property url backgroundHot: Qt.resolvedUrl("assets/windows/menu/menuitem_hot.png")
     readonly property url backgroundPushed: Qt.resolvedUrl("assets/windows/menu/menuitem_pushed.png")
 
-    implicitHeight: 18
+    implicitHeight: parent.height
     implicitWidth: contentItem.implicitWidth + (6 * 2)
 
     //font.letterSpacing: 0.05
