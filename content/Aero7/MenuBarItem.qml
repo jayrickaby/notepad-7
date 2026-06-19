@@ -40,6 +40,9 @@ T.MenuBarItem {
         border.top: 3
         border.bottom: 3
 
+        horizontalTileMode: BorderImage.Repeat
+        verticalTileMode: BorderImage.Repeat
+
         // Swap the image asset depending on whether the button is hovered or pressed
         source: {
             if (control.pressed) {

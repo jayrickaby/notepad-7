@@ -3,3 +3,4 @@ import QtQuick.Controls.Fusion auto
 MenuBar 2.0 MenuBar.qml
 MenuBarItem 2.0 MenuBarItem.qml
 Menu 2.0 Menu.qml
+MenuItem 2.0 MenuItem.qml
