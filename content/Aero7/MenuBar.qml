@@ -4,10 +4,10 @@ import QtQuick.Templates as T
 T.MenuBar {
     id: control
 
-    // This offsets items 1px down
+    // This offsets items 1px down and 1px right
     topPadding: 1
     bottomPadding: 0
-    leftPadding: 0
+    leftPadding: 1
     rightPadding: 0
 
     // Taken from "src/quickcontrols/fusion/MenuBar.qml"
