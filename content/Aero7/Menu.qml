@@ -44,6 +44,8 @@ T.Menu {
             border.top: 1
             border.bottom: 1
 
+            horizontalTileMode: BorderImage.Repeat
+            verticalTileMode: BorderImage.Repeat
 
             source: Qt.resolvedUrl("assets/windows/menu/menu_background.png")
         }
