@@ -15,8 +15,9 @@ T.Menu {
                              implicitContentHeight + topPadding + bottomPadding)
 
     margins: 0
-    padding: 1
-    overlap: 2
+    horizontalPadding: 3
+    verticalPadding: 3
+    //overlap: 2
 
     delegate: MenuItem { }
 
