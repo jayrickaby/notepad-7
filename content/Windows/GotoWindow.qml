@@ -21,18 +21,22 @@ ApplicationWindow {
     topPadding: 13
     bottomPadding: 13
 
-    Rectangle {
-        border.color: "red"
-        anchors.fill: parent
-    }
+    // Rectangle {
+    //     border.color: "red"
+    //     anchors.fill: parent
+    // }
 
     ColumnLayout {
         anchors.fill: parent
         spacing: 0
 
         Text {
-            text: "Line number:"
-
+            text: "Line number :"
+            Layout.alignment: Qt.AlignTop
+            Layout.topMargin: -4
+            font.letterSpacing: -0.75
+            font.pointSize: 9
+            renderType: Text.NativeRendering
         }
         TextField {
             text: "1"
