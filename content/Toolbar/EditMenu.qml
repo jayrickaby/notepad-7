@@ -1,6 +1,8 @@
 import QtQuick
 import QtQuick.Controls
 
+import "../Windows"
+
 Menu {
     title: qsTr("&Edit")
 
@@ -49,7 +51,13 @@ Menu {
 
     MenuSeparator { }
 
-    MenuItem { text: "Find..." }
+    MenuItem {
+        text: "Find..."
+
+        onTriggered: {
+            findWindow.show()
+        }
+    }
     MenuItem { text: "Find Next..." }
     MenuItem { text: "Replace..." }
     MenuItem { text: "Go To..." }
@@ -58,4 +66,8 @@ Menu {
 
     MenuItem { text: "Select All" }
     MenuItem { text: "Time/Date" }
+
+    FindWindow {
+        id: findWindow
+    }
 }
