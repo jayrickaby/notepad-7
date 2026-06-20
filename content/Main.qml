@@ -16,6 +16,7 @@ ApplicationWindow {
     property alias document: document
     property alias editMenu: editMenu
     property alias findWindow: findWindow
+    property alias gotoWindow: gotoWindow
 
     readonly property url baseUrl: Qt.resolvedUrl("../")
     readonly property url assetsUrl: Qt.resolvedUrl("../content/Aero7/assets/")
@@ -53,6 +54,12 @@ ApplicationWindow {
 
     FindWindow {
         id: findWindow
+
+        transientParent: window
+    }
+
+    GotoWindow {
+        id: gotoWindow
 
         transientParent: window
     }

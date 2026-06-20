@@ -58,7 +58,12 @@ Menu {
     }
     MenuItem { text: "Find Next..." }
     MenuItem { text: "Replace..." }
-    MenuItem { text: "Go To..." }
+    MenuItem {
+    text: "Go To..."
+            onTriggered: {
+            window.gotoWindow.show()
+        }
+    }
 
     MenuSeparator { }
 
