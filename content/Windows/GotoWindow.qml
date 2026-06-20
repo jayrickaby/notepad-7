@@ -21,6 +21,8 @@ ApplicationWindow {
     // Force user focus
     modality: Qt.WindowModal
 
+    font.pointSize: 9
+
     leftPadding: 11
     rightPadding: 11
     topPadding: 13
@@ -40,7 +42,6 @@ ApplicationWindow {
             Layout.alignment: Qt.AlignTop
             Layout.topMargin: -4
             font.letterSpacing: -0.75
-            font.pointSize: 9
             renderType: Text.NativeRendering
         }
         TextField {
@@ -50,6 +51,7 @@ ApplicationWindow {
             Layout.alignment: Qt.AlignTop
             Layout.topMargin: 1
             Layout.fillWidth: true
+            renderType: Text.NativeRendering
         }
 
         RowLayout {

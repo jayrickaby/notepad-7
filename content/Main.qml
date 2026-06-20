@@ -28,6 +28,8 @@ ApplicationWindow {
     height: 480
     visible: true
 
+    font.pointSize: 9
+
     header: MenuBar {
         id: menu
         height: 19
