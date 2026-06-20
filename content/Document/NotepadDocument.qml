@@ -136,4 +136,12 @@ TextEdit {
         console.log("Source changed to \"" + textDocument.source + "\"")
         window.updateTitle(getFormalFileName())
     }
+
+    onSelectionStartChanged: {
+        window.updateEditItemValidity()
+    }
+
+    onSelectionEndChanged: {
+        window.updateEditItemValidity()
+    }
 }

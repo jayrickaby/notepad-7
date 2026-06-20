@@ -22,10 +22,13 @@ ApplicationWindow {
     visible: true
 
     header: MenuBar {
+        id: menu
         height: 19
 
         FileMenu {}
-        EditMenu {}
+        EditMenu {
+            id: editMenu
+        }
         FormatMenu {}
         HelpMenu {}
         ViewMenu {}
@@ -41,6 +44,14 @@ ApplicationWindow {
         title: appTitle
         buttons: MessageDialog.Save | MessageDialog.Discard | MessageDialog.Cancel
     }
+
+    function updateTitle(filename) {
+        console.log("Updating title with: \"" + filename + "\"")
+        title = (filename + " - " + appTitle)
+    }
+
+    // DOCUMENT BRIDGE FUNCTIONS
+    // AS CANT DIRECTLY ACCESS COMPONENTS FROM OTHER COMPONENTS
 
     function createNewFile() {
         document.invokeCreate()
@@ -58,9 +69,50 @@ ApplicationWindow {
         document.invokeLoad()
     }
 
-    function updateTitle(filename) {
-        console.log("Updating title with: \"" + filename + "\"")
-        title = (filename + " - " + appTitle)
+    function undoText() {
+        if (document.canUndo){
+            document.undo()
+        }
+    }
+
+    function cutText() {
+        if (isSelectionValid()) {
+            document.cut()
+        }
+    }
+
+    function copyText() {
+        if (isSelectionValid()) {
+            document.copy()
+        }
+    }
+
+    function pasteText() {
+        document.paste()
+    }
+
+    function deleteText() {
+        if (isSelectionValid()) {
+            let sel = getSelection()
+            document.remove(sel[0], sel[1])
+        }
+    }
+
+
+    function getSelection() {
+        return ([
+            document.cursorSelection.selectionStart,
+            document.cursorSelection.selectionEnd
+        ])
+    }
+
+    function isSelectionValid() {
+        let sel = getSelection()
+        return (sel[0] !== sel[1])
+    }
+
+    function updateEditItemValidity() {
+        editMenu.updateItemValidity()
     }
 
     Component.onCompleted: {
@@ -68,6 +120,7 @@ ApplicationWindow {
         height = Screen.height * 0.75
         createNewFile()
         updateTitle(document.getFormalFileName())
+        updateEditItemValidity()
     }
 
     onClosing: (close) => {
