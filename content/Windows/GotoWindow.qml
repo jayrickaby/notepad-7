@@ -3,7 +3,7 @@ import QtQuick.Controls
 import QtQuick.Layouts
 import QtQuick.Window
 
-Window {
+ApplicationWindow {
     width: 249
     height: 98
     title: qsTr("Go To Line")
