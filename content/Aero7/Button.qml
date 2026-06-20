@@ -12,12 +12,12 @@ T.Button {
     id: control
 
     readonly property url assetsDir: Qt.resolvedUrl("assets/windows/button/")
-    readonly property string imgButton: "button.png"
-    readonly property string imgButtonHot: "button_hot.png"
-    readonly property string imgButtonPressed: "button_pressed.png"
-    readonly property string imgButtonDisabled: "button_disabled.png"
-    readonly property string imgButtonDefault: "button_default.png"
-    readonly property string imgButtonDefaultAnimated: "button_default_animated.png"
+    readonly property string img: "button.png"
+    readonly property string imgHot: "button_hot.png"
+    readonly property string imgPressed: "button_pressed.png"
+    readonly property string imgDisabled: "button_disabled.png"
+    readonly property string imgDefault: "button_default.png"
+    readonly property string imgDefaultAnimated: "button_default_animated.png"
 
 
     implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
@@ -52,12 +52,12 @@ T.Button {
         // Swap the image asset depending on whether the button is hovered or pressed
         source: {
             if (control.pressed) {
-                return assetsDir + imgButtonPressed
+                return assetsDir + imgPressed
             }
             if (control.hovered) {
-                return assetsDir + imgButtonHot
+                return assetsDir + imgHot
             }
-            return assetsDir + imgButton
+            return assetsDir + img
         }
     }
 }
