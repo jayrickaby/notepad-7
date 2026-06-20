@@ -58,7 +58,6 @@ ApplicationWindow {
         height = Screen.height * 0.75
         document.invokeCreate()
         updateTitle(document.getFormalFileName())
-        editMenu.updateItemValidity()
     }
 
     onClosing: (close) => {

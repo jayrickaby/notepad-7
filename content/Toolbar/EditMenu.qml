@@ -5,8 +5,8 @@ Menu {
     title: qsTr("&Edit")
 
     MenuItem {
-        id: undoButton
         text: "Undo"
+        enabled: window.document.canUndo
 
         onTriggered: {
             window.undoText()
@@ -16,16 +16,16 @@ Menu {
     MenuSeparator { }
 
     MenuItem {
-        id: cutButton
         text: "Cut"
+        enabled: window.document.hasSelection
 
         onTriggered: {
             window.document.cut()
         }
     }
     MenuItem {
-        id: copyButton
         text: "Copy"
+        enabled: window.document.hasSelection
 
         onTriggered: {
             window.document.copy()
@@ -39,8 +39,8 @@ Menu {
         }
     }
     MenuItem {
-        id: deleteButton
         text: "Delete"
+        enabled: window.document.hasSelection
 
         onTriggered: {
             window.document.remove(window.document.getSelection()[0], window.document.getSelection()[1])
@@ -49,40 +49,13 @@ Menu {
 
     MenuSeparator { }
 
-    MenuItem {
-        text: "Find..."
-    }
-    MenuItem {
-        text: "Find Next..."
-    }
-    MenuItem {
-        text: "Replace..."
-    }
-    MenuItem {
-        text: "Go To..."
-    }
+    MenuItem { text: "Find..." }
+    MenuItem { text: "Find Next..." }
+    MenuItem { text: "Replace..." }
+    MenuItem { text: "Go To..." }
 
     MenuSeparator { }
 
-    MenuItem {
-        text: "Select All"
-    }
-    MenuItem {
-        text: "Time/Date"
-    }
-
-    function updateItemValidity(){
-        if (!window.document.isSelectionValid()) {
-            undoButton.enabled = false
-            cutButton.enabled = false
-            copyButton.enabled = false
-            deleteButton.enabled = false
-            return
-        }
-
-        undoButton.enabled = true
-        cutButton.enabled = true
-        copyButton.enabled = true
-        deleteButton.enabled = true
-    }
+    MenuItem { text: "Select All" }
+    MenuItem { text: "Time/Date" }
 }

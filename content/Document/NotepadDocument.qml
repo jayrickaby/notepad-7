@@ -2,6 +2,7 @@ import QtQuick
 import QtQuick.Dialogs
 
 TextEdit {
+    property bool hasSelection: false
     property var pendingOperation: null
 
     function invokeCreate() {
@@ -149,10 +150,10 @@ TextEdit {
     }
 
     onSelectionStartChanged: {
-        window.editMenu.updateItemValidity()
+        hasSelection = isSelectionValid()
     }
 
     onSelectionEndChanged: {
-        window.editMenu.updateItemValidity()
+        hasSelection = isSelectionValid()
     }
 }
