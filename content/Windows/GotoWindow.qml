@@ -40,7 +40,9 @@ ApplicationWindow {
         }
         TextField {
             text: "1"
-
+            Layout.preferredHeight: 23
+            Layout.alignment: Qt.AlignTop
+            Layout.topMargin: 1
             Layout.fillWidth: true
         }
 
