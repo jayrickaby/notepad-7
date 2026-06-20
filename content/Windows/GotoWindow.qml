@@ -5,6 +5,7 @@ import QtQuick.Window
 
 ApplicationWindow {
     property alias lineNumber: textField.text
+    id: gotoWindow
 
     title: qsTr("Go To Line")
 
@@ -58,7 +59,13 @@ ApplicationWindow {
             Layout.alignment: Qt.AlignRight | Qt.AlignBottom
             spacing: 8
             Button { text: "Go To" }
-            Button { text: "Cancel" }
+            Button {
+                text: "Cancel"
+                onClicked: {
+                    gotoWindow.close()
+                }
+
+            }
         }
     }
 
