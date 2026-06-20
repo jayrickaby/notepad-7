@@ -108,6 +108,17 @@ TextEdit {
         }
     }
 
+    function getSelection() {
+        return ([
+            cursorSelection.selectionStart,
+            cursorSelection.selectionEnd
+        ])
+    }
+
+    function isSelectionValid() {
+        let sel = getSelection()
+        return (sel[0] !== sel[1])
+    }
     FileDialog {
         id: saveFileLocationDialog
         title: "save"
@@ -138,10 +149,10 @@ TextEdit {
     }
 
     onSelectionStartChanged: {
-        window.updateEditItemValidity()
+        window.editMenu.updateItemValidity()
     }
 
     onSelectionEndChanged: {
-        window.updateEditItemValidity()
+        window.editMenu.updateItemValidity()
     }
 }

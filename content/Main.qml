@@ -11,6 +11,9 @@ import "Toolbar"
 ApplicationWindow {
     id: window
 
+    property alias document: document
+    property alias editMenu: editMenu
+
     readonly property url baseUrl: Qt.resolvedUrl("../")
     readonly property url assetsUrl: Qt.resolvedUrl("../content/Aero7/assets/")
     readonly property url documentsFolder: StandardPaths.writableLocation(StandardPaths.DocumentsLocation)
@@ -50,77 +53,12 @@ ApplicationWindow {
         title = (filename + " - " + appTitle)
     }
 
-    // DOCUMENT BRIDGE FUNCTIONS
-    // AS CANT DIRECTLY ACCESS COMPONENTS FROM OTHER COMPONENTS
-
-    function createNewFile() {
-        document.invokeCreate()
-    }
-
-    function saveCurrentFile() {
-        document.invokeSave()
-    }
-
-    function saveCurrentFileAs() {
-        document.invokeSaveAs()
-    }
-
-    function loadFile() {
-        document.invokeLoad()
-    }
-
-    function undoText() {
-        if (document.canUndo){
-            document.undo()
-        }
-    }
-
-    function cutText() {
-        if (isSelectionValid()) {
-            document.cut()
-        }
-    }
-
-    function copyText() {
-        if (isSelectionValid()) {
-            document.copy()
-        }
-    }
-
-    function pasteText() {
-        document.paste()
-    }
-
-    function deleteText() {
-        if (isSelectionValid()) {
-            let sel = getSelection()
-            document.remove(sel[0], sel[1])
-        }
-    }
-
-
-    function getSelection() {
-        return ([
-            document.cursorSelection.selectionStart,
-            document.cursorSelection.selectionEnd
-        ])
-    }
-
-    function isSelectionValid() {
-        let sel = getSelection()
-        return (sel[0] !== sel[1])
-    }
-
-    function updateEditItemValidity() {
-        editMenu.updateItemValidity()
-    }
-
     Component.onCompleted: {
         width = Screen.width * 0.75
         height = Screen.height * 0.75
-        createNewFile()
+        document.invokeCreate()
         updateTitle(document.getFormalFileName())
-        updateEditItemValidity()
+        editMenu.updateItemValidity()
     }
 
     onClosing: (close) => {

@@ -10,28 +10,28 @@ Menu {
         text: "New"
 
         onTriggered: {
-            window.createNewFile()
+            window.document.invokeCreate()
         }
     }
     MenuItem {
         text: "Open..."
 
         onTriggered: {
-            window.loadFile()
+            window.document.invokeLoad()
         }
     }
     MenuItem {
         text: "Save"
 
         onTriggered: {
-            window.saveCurrentFile()
+            window.document.invokeSave()
         }
     }
     MenuItem {
         text: "Save As..."
 
         onTriggered: {
-            window.saveCurrentFileAs()
+            window.document.invokeSaveAs()
         }
     }
 

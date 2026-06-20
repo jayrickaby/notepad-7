@@ -20,7 +20,7 @@ Menu {
         text: "Cut"
 
         onTriggered: {
-            window.cutText()
+            window.document.cut()
         }
     }
     MenuItem {
@@ -28,14 +28,14 @@ Menu {
         text: "Copy"
 
         onTriggered: {
-            window.copyText()
+            window.document.copy()
         }
     }
     MenuItem {
         text: "Paste"
 
         onTriggered: {
-            window.pasteText()
+            window.document.paste()
         }
     }
     MenuItem {
@@ -43,7 +43,7 @@ Menu {
         text: "Delete"
 
         onTriggered: {
-            window.deleteText()
+            window.document.remove(window.document.getSelection()[0], window.document.getSelection()[1])
         }
     }
 
@@ -72,7 +72,7 @@ Menu {
     }
 
     function updateItemValidity(){
-        if (!window.isSelectionValid()) {
+        if (!window.document.isSelectionValid()) {
             undoButton.enabled = false
             cutButton.enabled = false
             copyButton.enabled = false
