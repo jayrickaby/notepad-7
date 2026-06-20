@@ -4,6 +4,8 @@ import QtQuick.Dialogs
 TextEdit {
     property bool hasSelection: false
     property var pendingOperation: null
+    property int currentLine: 1
+
 
     function invokeCreate() {
         console.log("Creating new file...")
@@ -151,9 +153,14 @@ TextEdit {
 
     onSelectionStartChanged: {
         hasSelection = isSelectionValid()
+        let textUpToCursor = text.substring(0, cursorSelection.selectionStart);
+        let lines = textUpToCursor.split("\n")
+        currentLine = lines.length
     }
 
     onSelectionEndChanged: {
         hasSelection = isSelectionValid()
     }
+
+
 }

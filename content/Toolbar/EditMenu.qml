@@ -61,7 +61,8 @@ Menu {
     MenuItem {
     text: "Go To..."
             onTriggered: {
-            window.gotoWindow.show()
+                window.gotoWindow.lineNumber = window.document.currentLine
+                window.gotoWindow.show()
         }
     }
 

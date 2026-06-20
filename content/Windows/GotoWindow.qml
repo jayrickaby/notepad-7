@@ -4,6 +4,8 @@ import QtQuick.Layouts
 import QtQuick.Window
 
 ApplicationWindow {
+    property alias lineNumber: textField.text
+
     title: qsTr("Go To Line")
 
     width: 249
