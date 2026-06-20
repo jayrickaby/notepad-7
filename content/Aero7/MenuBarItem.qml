@@ -41,7 +41,7 @@ T.MenuBarItem {
         border.bottom: 3
 
         horizontalTileMode: BorderImage.Repeat
-        verticalTileMode: BorderImage.Repeat
+        verticalTileMode: BorderImage.Stretch
 
         // Swap the image asset depending on whether the button is hovered or pressed
         source: {

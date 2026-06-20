@@ -30,7 +30,7 @@ T.MenuBar {
         anchors.fill : parent
 
         horizontalTileMode: BorderImage.Repeat
-        verticalTileMode: BorderImage.Repeat
+        verticalTileMode: BorderImage.Stretch
 
         // This ensures that the menubar gradient is correctly aligned
         anchors.topMargin: -1
