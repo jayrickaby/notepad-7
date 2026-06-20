@@ -7,12 +7,15 @@ import QtQuick.Window
 
 import "Document"
 import "Toolbar"
+import "Windows"
+
 
 ApplicationWindow {
     id: window
 
     property alias document: document
     property alias editMenu: editMenu
+    property alias findWindow: findWindow
 
     readonly property url baseUrl: Qt.resolvedUrl("../")
     readonly property url assetsUrl: Qt.resolvedUrl("../content/Aero7/assets/")
@@ -46,6 +49,12 @@ ApplicationWindow {
         id: saveChangesMessage
         title: appTitle
         buttons: MessageDialog.Save | MessageDialog.Discard | MessageDialog.Cancel
+    }
+
+    FindWindow {
+        id: findWindow
+
+        transientParent: window
     }
 
     function updateTitle(filename) {

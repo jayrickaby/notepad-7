@@ -31,7 +31,5 @@ Window {
             Button { text: "Find Next" }
             Button { text: "Cancel" }
         }
-
-
     }
 }
