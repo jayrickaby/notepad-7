@@ -22,21 +22,25 @@ T.Button {
 
     implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
                             implicitContentWidth + leftPadding + rightPadding)
-    implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
-                             implicitContentHeight + topPadding + bottomPadding)
+    implicitHeight: 21
 
-    padding: 3
+    topPadding: 3
+    bottomPadding: 3
+    leftPadding: 19
+    rightPadding: 19
 
     contentItem: Text {
         text: control.text
         font.pointSize: 9
         color: !control.enabled ? "#838383" : "#000000"
-        horizontalAlignment: Text.AlignHCenter
-        verticalAlignment: Text.AlignVCenter
-        elide: Text.ElideRight
+
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.verticalCenterOffset: -1
+
+        renderType: Text.NativeRendering
     }
 
-     background: BorderImage {
+    background: BorderImage {
         border.left: 3
         border.right: 3
         border.top: 3
