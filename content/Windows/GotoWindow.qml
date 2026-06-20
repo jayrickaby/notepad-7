@@ -39,6 +39,7 @@ ApplicationWindow {
             renderType: Text.NativeRendering
         }
         TextField {
+            id: textField
             text: "1"
             Layout.preferredHeight: 23
             Layout.alignment: Qt.AlignTop
@@ -55,5 +56,9 @@ ApplicationWindow {
     }
 
 
+    onVisibleChanged: {
+        textField.forceActiveFocus()
+        textField.selectAll()
+    }
 
 }
