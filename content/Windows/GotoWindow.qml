@@ -16,6 +16,9 @@ ApplicationWindow {
     minimumHeight: height
     minimumWidth: width
 
+    // Force user focus
+    modality: Qt.WindowModal
+
     leftPadding: 11
     rightPadding: 11
     topPadding: 13
