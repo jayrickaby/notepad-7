@@ -4,9 +4,17 @@ import QtQuick.Layouts
 import QtQuick.Window
 
 ApplicationWindow {
+    title: qsTr("Go To Line")
+
     width: 249
     height: 98
-    title: qsTr("Go To Line")
+
+    // Not resizeable
+    maximumHeight: height
+    maximumWidth: width
+
+    minimumHeight: height
+    minimumWidth: width
 
     leftPadding: 11
     rightPadding: 11
