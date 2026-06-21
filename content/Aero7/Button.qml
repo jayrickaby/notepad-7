@@ -34,6 +34,7 @@ T.Button {
         font.pointSize: 9
         color: !control.enabled ? "#838383" : "#000000"
 
+        anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
         anchors.verticalCenterOffset: -1
 
@@ -56,6 +57,9 @@ T.Button {
             }
             if (control.hovered) {
                 return assetsDir + imgHot
+            }
+            if (control.highlighted) {
+                return assetsDir + imgDefault
             }
             return assetsDir + img
         }

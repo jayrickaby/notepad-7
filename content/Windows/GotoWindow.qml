@@ -23,7 +23,6 @@ ApplicationWindow {
     // Force user focus
     modality: Qt.WindowModal
 
-    font.pointSize: 9
 
     leftPadding: 11
     rightPadding: 11
@@ -44,6 +43,7 @@ ApplicationWindow {
             Layout.alignment: Qt.AlignTop
             Layout.topMargin: -4
             font.letterSpacing: -0.75
+            font.pointSize: 9
             renderType: Text.NativeRendering
         }
         TextField {
@@ -61,17 +61,15 @@ ApplicationWindow {
             spacing: 8
             Button {
                 text: "Go To"
+                highlighted: true
+                Layout.preferredWidth: 73
 
                 onClicked: {
                     if (window.document.goToLine(textField.text)){
                         gotoWindow.close()
                         return
                     }
-
                     outOfBoundsPopup.open()
-
-
-
                 }
             }
             Button {
