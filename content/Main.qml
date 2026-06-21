@@ -7,8 +7,8 @@ import QtQuick.Window
 
 import "Document"
 import "Toolbar"
-import "Windows"
-
+import "Windows/EditMenu"
+import "Windows/HelpMenu"
 
 ApplicationWindow {
     id: window
