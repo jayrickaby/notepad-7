@@ -62,7 +62,9 @@ ApplicationWindow {
                 text: "Go To"
 
                 onClicked: {
-                    window.document.goToLine(textField.text)
+                    if (window.document.goToLine(textField.text)){
+                        gotoWindow.close()
+                    }
                 }
             }
             Button {

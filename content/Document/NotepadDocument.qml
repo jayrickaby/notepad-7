@@ -79,7 +79,7 @@ TextEdit {
     function goToLine(target) {
         if (target < 1 || target > lineCount) {
             console.log("out of bounds!")
-            return
+            return false
         }
 
         var lines = text.split("\n");
@@ -90,6 +90,8 @@ TextEdit {
         }
 
         cursorPosition = targetPos
+
+        return true
 
     }
 
