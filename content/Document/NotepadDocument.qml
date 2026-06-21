@@ -97,7 +97,8 @@ TextEdit {
     MessageDialog {
         id: saveFilePrompt
         buttons: MessageDialog.Save | MessageDialog.Discard | MessageDialog.Cancel
-        text: "modified"
+        title: window.appTitle
+        text: "Do you want to save changes to " + getFormalFileName() + "?"
 
         onButtonClicked: function(button, role) {
             switch (button) {
@@ -142,7 +143,7 @@ TextEdit {
     }
     FileDialog {
         id: saveFileLocationDialog
-        title: "save"
+        title: "Save As"
         defaultSuffix: "txt"
         nameFilters: ["Text Documents (*.txt)", "All Files"]
         fileMode: FileDialog.SaveFile

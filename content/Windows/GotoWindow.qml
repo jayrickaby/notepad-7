@@ -96,16 +96,7 @@ ApplicationWindow {
         title: window.appTitle + " - Goto Line"
         text: "The line number is beyond the total number of lines"
         modality: Qt.WindowModal
-        //
-        // width: 324
-        // height: 116
 
-        // // Not resizeable
-        // maximumHeight: height
-        // maximumWidth: width
-        //
-        // minimumHeight: height
-        // minimumWidth: width
         onButtonClicked: function(button, role) {
             switch (button) {
                 case MessageDialog.Ok:
