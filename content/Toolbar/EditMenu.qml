@@ -68,15 +68,20 @@ Menu {
     }
 
     MenuItem {
-    text: "Go To..."
-            onTriggered: {
-                window.gotoWindow.show()
+        text: "Go To..."
+        onTriggered: {
+            window.gotoWindow.show()
         }
     }
 
     MenuSeparator { }
 
-    MenuItem { text: "Select All" }
+    MenuItem {
+        text: "Select All"
+        onTriggered: {
+            window.document.selectAll()
+        }
+    }
     MenuItem { text: "Time/Date" }
 
 }
