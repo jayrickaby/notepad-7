@@ -82,6 +82,12 @@ Menu {
             window.document.selectAll()
         }
     }
-    MenuItem { text: "Time/Date" }
+    MenuItem {
+        text: "Time/Date"
+        onTriggered: {
+            let str = window.getCurrentTime() + " " + window.getCurrentDate()
+            window.document.insert(window.document.cursorPosition, str)
+        }
+    }
 
 }

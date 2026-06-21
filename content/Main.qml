@@ -71,6 +71,16 @@ ApplicationWindow {
         title = (filename + " - " + appTitle)
     }
 
+    function getCurrentDate() {
+        let date = new Date()
+        return Qt.formatDate(date, Qt.DefaultLocaleShortFormat)
+    }
+
+    function getCurrentTime() {
+        let date = new Date()
+        return Qt.formatTime(date, Qt.DefaultLocaleShortFormat)
+    }
+
     Component.onCompleted: {
         width = Screen.width * 0.75
         height = Screen.height * 0.75
