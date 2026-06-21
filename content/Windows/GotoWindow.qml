@@ -58,7 +58,13 @@ ApplicationWindow {
         RowLayout {
             Layout.alignment: Qt.AlignRight | Qt.AlignBottom
             spacing: 8
-            Button { text: "Go To" }
+            Button {
+                text: "Go To"
+
+                onClicked: {
+                    window.document.goToLine(textField.text)
+                }
+            }
             Button {
                 text: "Cancel"
                 onClicked: {

@@ -76,6 +76,23 @@ TextEdit {
         return filename
     }
 
+    function goToLine(target) {
+        if (target < 1 || target > lineCount) {
+            console.log("out of bounds!")
+            return
+        }
+
+        var lines = text.split("\n");
+        var targetPos = 0
+
+        for (var i = 0; i < target - 1; i++) {
+            targetPos += lines[i].length + 1
+        }
+
+        cursorPosition = targetPos
+
+    }
+
     MessageDialog {
         id: saveFilePrompt
         buttons: MessageDialog.Save | MessageDialog.Discard | MessageDialog.Cancel
