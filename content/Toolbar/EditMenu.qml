@@ -51,13 +51,22 @@ Menu {
 
     MenuItem {
         text: "Find..."
+        enabled: window.document.length > 0
 
         onTriggered: {
             window.findWindow.show()
         }
     }
-    MenuItem { text: "Find Next..." }
-    MenuItem { text: "Replace..." }
+
+    MenuItem {
+        text: "Find Next..."
+        enabled: window.document.length > 0
+    }
+
+    MenuItem {
+        text: "Replace..."
+    }
+
     MenuItem {
     text: "Go To..."
             onTriggered: {
