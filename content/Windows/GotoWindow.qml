@@ -1,5 +1,6 @@
 import QtQuick
 import QtQuick.Controls
+import QtQuick.Dialogs
 import QtQuick.Layouts
 import QtQuick.Window
 
@@ -64,7 +65,13 @@ ApplicationWindow {
                 onClicked: {
                     if (window.document.goToLine(textField.text)){
                         gotoWindow.close()
+                        return
                     }
+
+                    outOfBoundsPopup.open()
+
+
+
                 }
             }
             Button {
@@ -72,15 +79,43 @@ ApplicationWindow {
                 onClicked: {
                     gotoWindow.close()
                 }
-
             }
         }
     }
 
-
-    onVisibleChanged: {
+    function reset() {
+        lineNumber = window.document.currentLine
         textField.forceActiveFocus()
         textField.selectAll()
+
     }
 
+    MessageDialog {
+        id: outOfBoundsPopup
+        buttons: MessageDialog.Ok
+        title: window.appTitle + " - Goto Line"
+        text: "The line number is beyond the total number of lines"
+        modality: Qt.WindowModal
+        //
+        // width: 324
+        // height: 116
+
+        // // Not resizeable
+        // maximumHeight: height
+        // maximumWidth: width
+        //
+        // minimumHeight: height
+        // minimumWidth: width
+        onButtonClicked: function(button, role) {
+            switch (button) {
+                case MessageDialog.Ok:
+                    reset()
+                    break
+            }
+        }
+    }
+
+    onVisibleChanged: {
+        reset()
+    }
 }

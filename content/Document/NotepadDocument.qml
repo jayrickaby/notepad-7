@@ -78,7 +78,6 @@ TextEdit {
 
     function goToLine(target) {
         if (target < 1 || target > lineCount) {
-            console.log("out of bounds!")
             return false
         }
 
