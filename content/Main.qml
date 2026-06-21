@@ -15,6 +15,7 @@ ApplicationWindow {
 
     property alias document: document
     property alias editMenu: editMenu
+    property alias aboutWindow: aboutWindow
     property alias findWindow: findWindow
     property alias gotoWindow: gotoWindow
 
@@ -52,6 +53,12 @@ ApplicationWindow {
         id: saveChangesMessage
         title: appTitle
         buttons: MessageDialog.Save | MessageDialog.Discard | MessageDialog.Cancel
+    }
+
+    AboutWindow {
+        id: aboutWindow
+
+        transientParent: window
     }
 
     FindWindow {

@@ -13,6 +13,10 @@ Menu {
 
     MenuItem {
         text: "About " + window.appTitle
+
+        onTriggered: {
+            window.aboutWindow.show()
+        }
     }
 
 }
