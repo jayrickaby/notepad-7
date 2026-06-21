@@ -12,7 +12,7 @@ Menu {
     MenuSeparator { }
 
     MenuItem {
-        text: "About Notepad"
+        text: "About " + window.appTitle
     }
 
 }
