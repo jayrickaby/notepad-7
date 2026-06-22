@@ -28,6 +28,7 @@ ApplicationWindow {
     width: 640
     height: 480
     visible: true
+    topPadding: 20
 
     font.pointSize: 9
 

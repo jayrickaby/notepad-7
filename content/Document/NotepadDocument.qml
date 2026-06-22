@@ -12,10 +12,16 @@ ScrollView {
     ScrollBar.vertical.policy: ScrollBar.AlwaysOn
 
     TextArea {
-    id: textArea
+        id: textArea
+
         property bool hasSelection: false
 
         wrapMode: TextEdit.NoWrap
+        font.family: "Lucida Console"
+        font.pointSize: 10
+
+        leftPadding: 3
+        topPadding: 2
 
         MessageDialog {
             id: saveFilePrompt
