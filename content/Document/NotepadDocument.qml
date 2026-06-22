@@ -154,11 +154,11 @@ ScrollView {
     }
 
     function goToLine(target) {
-        if (target < 1 || target > lineCount) {
+        if (target < 1 || target > textArea.lineCount) {
             return false
         }
 
-        var lines = text.split("\n");
+        var lines = textArea.text.split("\n");
         var targetPos = 0
 
         for (var i = 0; i < target - 1; i++) {
