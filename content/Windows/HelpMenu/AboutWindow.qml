@@ -32,8 +32,7 @@ ApplicationWindow {
             Layout.fillWidth: true
             Layout.preferredHeight: implicitHeight
             fillMode: Image.PreserveAspectFit
-            source: Qt.resolvedUrl("../../Aero7/assets/logo/logo.png")
-
+            source: Qt.resolvedUrl("../../Aero7/assets/logo/logo_cropped.png")
         }
 
         Text {
