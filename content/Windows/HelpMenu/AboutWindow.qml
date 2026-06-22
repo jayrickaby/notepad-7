@@ -4,6 +4,7 @@ import QtQuick.Layouts
 import QtQuick.Window
 
 ApplicationWindow {
+    id: aboutWindow
     title: qsTr("About " + window.appTitle)
 
     width: 458
@@ -61,6 +62,10 @@ ApplicationWindow {
             Layout.alignment: Qt.AlignRight | Qt.AlignBottom
             text: "OK"
             highlighted: true
+
+            onClicked: {
+                aboutWindow.close()
+            }
         }
     }
 }
