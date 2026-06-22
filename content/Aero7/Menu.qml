@@ -19,23 +19,15 @@ T.Menu {
 
     delegate: MenuItem { }
 
-    contentItem: ListView {
-        implicitHeight: contentHeight
-        implicitWidth: contentWidth
-        model: control.contentModel
-        interactive: Window.window
-                     ? contentHeight + control.topPadding + control.bottomPadding > control.height
-                     : false
-        clip: true
-        currentIndex: control.currentIndex
+    contentItem: Column {
+        id: column
+        Repeater {
+            model: control.contentModel
+        }
 
-        ScrollIndicator.vertical: ScrollIndicator {}
     }
 
     background: Rectangle {
-        // implicitWidth: 200
-        implicitHeight: 20
-
         BorderImage {
             anchors.fill: parent
 
@@ -53,7 +45,5 @@ T.Menu {
 
     onOpened: {
         x = -1
-        console.log("menu w: " + width)
-        console.log("menu imp c w: " + implicitContentWidth)
     }
 }

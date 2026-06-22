@@ -17,44 +17,28 @@ T.MenuItem {
 
     implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
                             implicitContentWidth + leftPadding + rightPadding)
-    // implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
-    //                          implicitContentHeight + topPadding + bottomPadding,
-    //                          implicitIndicatorHeight + topPadding + bottomPadding)
-    implicitHeight: 22
+    implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
+                             implicitContentHeight + topPadding + bottomPadding,
+                             implicitIndicatorHeight + topPadding + bottomPadding)
 
     padding: 0
-    spacing: 0
 
-    contentItem: Item {
-        implicitWidth: gutter.width + gutter.anchors.leftMargin + label.implicitWidth + label.anchors.leftMargin
-        implicitHeight: parent.height
+    //Explicitly set 9 or else it is slightly too big
+    font.pointSize: 9
+    font.hintingPreference: Font.PreferFullHinting
 
-        anchors.left: checkmark.right
-
-        Image {
-            id: gutter
-            width: 3
-            height: parent.height
-            anchors.left: parent.left
-
-            anchors.leftMargin: 3
-            anchors.rightMargin: 3
-
-            source: control.imgGutter
-        }
+    contentItem: Row {
+        leftPadding: 22 + 3 + 3 + 4  // checkmark + empty space + gutter + empty space
+        rightPadding: 52
 
         Text {
-            id: label
-
             text: control.text
             font: control.font
-            color: control.down || control.highlighted ? Fusion.highlightedText(control.palette) : control.palette.text
-
-            anchors.left: gutter.right
-            anchors.leftMargin: 4
-            // anchors.rightMargin: 55
+            height: 22
             anchors.verticalCenter: parent.verticalCenter
-            anchors.verticalCenterOffset: -1
+            anchors.verticalCenterOffset: 2
+
+            renderType: Text.NativeRendering
         }
     }
 
@@ -95,6 +79,15 @@ T.MenuItem {
         anchors.fill: parent
 
         color: "#f1f1f1"
+
+        Image {
+            id: gutter
+            width: 3
+            height: parent.height
+            anchors.left: parent.left
+            anchors.leftMargin: 22 + 3 // checkbox + whitespace
+            source: control.imgGutter
+        }
 
         BorderImage {
             anchors.fill: parent

@@ -15,6 +15,7 @@ T.MenuBarItem {
     font.pointSize: 9
     font.hintingPreference: Font.PreferFullHinting
 
+
     // Override so its similar to windows font rendering
     // TODO: Replace with custom.
     contentItem: IconLabel {
@@ -30,8 +31,8 @@ T.MenuBarItem {
         // Text is 1 px above V center in Notepad
         topPadding: -1
         bottomPadding: 1
-
-        //renderType: Text.NativeRendering
+        //
+        // text.renderType: Text.NativeRendering
     }
 
     background: BorderImage {
