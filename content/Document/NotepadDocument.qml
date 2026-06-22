@@ -8,6 +8,9 @@ ScrollView {
     property var pendingOperation: null
     property int currentLine: 1
 
+    ScrollBar.horizontal.policy: {textArea.wrapMode === Text.NoWrap ? ScrollBar.AlwaysOn : ScrollBar.AlwaysOff}
+    ScrollBar.vertical.policy: ScrollBar.AlwaysOn
+
     TextArea {
     id: textArea
         property bool hasSelection: false
