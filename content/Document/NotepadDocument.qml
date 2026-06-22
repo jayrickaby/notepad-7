@@ -174,12 +174,12 @@ ScrollView {
     }
 
     function setWrapMode(mode) {
-        wrapMode = mode
-        console.log(wrapMode)
+        textArea.wrapMode = mode
 
-        var temp = text
-        text = ""
-        text = temp
+        // Refresh document
+        let temp = textArea.text
+        textArea.text = ""
+        textArea.text = temp
     }
      function handlePendingOperation() {
             if (pendingOperation) {
