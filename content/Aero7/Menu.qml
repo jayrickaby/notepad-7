@@ -8,7 +8,6 @@ import QtQuick.Window
 
 T.Menu {
     id: control
-
     implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
                             implicitContentWidth + leftPadding + rightPadding)
     implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
@@ -22,6 +21,7 @@ T.Menu {
 
     contentItem: ListView {
         implicitHeight: contentHeight
+        implicitWidth: contentWidth
         model: control.contentModel
         interactive: Window.window
                      ? contentHeight + control.topPadding + control.bottomPadding > control.height
@@ -33,7 +33,7 @@ T.Menu {
     }
 
     background: Rectangle {
-        implicitWidth: 200
+        // implicitWidth: 200
         implicitHeight: 20
 
         BorderImage {
@@ -53,5 +53,7 @@ T.Menu {
 
     onOpened: {
         x = -1
+        console.log("menu w: " + width)
+        console.log("menu imp c w: " + implicitContentWidth)
     }
 }

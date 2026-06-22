@@ -11,6 +11,7 @@ import QtQuick.Controls.Fusion.impl
 T.MenuItem {
     readonly property url backgroundHot: Qt.resolvedUrl("assets/windows/menu/menuitem_hot.png")
     readonly property url backgroundPushed: Qt.resolvedUrl("assets/windows/menu/menuitem_pushed.png")
+    readonly property url imgGutter: Qt.resolvedUrl("assets/windows/menu/menu_gutter.png")
 
     id: control
 
@@ -24,65 +25,74 @@ T.MenuItem {
     padding: 0
     spacing: 0
 
-    icon.width: 16
-    icon.height: 16
-
     contentItem: Item {
-        width: control.availableWidth
-        height: control.availableHeight
+        implicitWidth: gutter.width + gutter.anchors.leftMargin + label.implicitWidth + label.anchors.leftMargin
+        implicitHeight: parent.height
 
-        Item {
-            id: iconArea
-            width: 22
-            height: 22
+        anchors.left: checkmark.right
+
+        Image {
+            id: gutter
+            width: 3
+            height: parent.height
             anchors.left: parent.left
+
+            anchors.leftMargin: 3
+            anchors.rightMargin: 3
+
+            source: control.imgGutter
+        }
+
+        Text {
+            id: label
+
+            text: control.text
+            font: control.font
+            color: control.down || control.highlighted ? Fusion.highlightedText(control.palette) : control.palette.text
+
+            anchors.left: gutter.right
+            anchors.leftMargin: 4
+            // anchors.rightMargin: 55
             anchors.verticalCenter: parent.verticalCenter
-
-            Image {
-                anchors.centerIn: parent
-                source: control.icon.source
-                width: control.icon.width
-                height: control.icon.height
-                visible: control.icon.source.toString() !== ""
-            }
-
-            Text {
-                id: labelText
-                text: control.text
-                font: control.font
-                color: control.down || control.highlighted ? Fusion.highlightedText(control.palette) : control.palette.text
-
-                anchors.left: iconArea.right
-                anchors.leftMargin: 10 // 4px space + 2px line + 4px space
-                anchors.verticalCenter: parent.verticalCenter
-                elide: Text.ElideRight
-            }
+            anchors.verticalCenterOffset: -1
         }
     }
 
-    arrow: ColorImage {
-        x: control.mirrored ? control.padding : control.width - width - control.padding
-        y: control.topPadding + (control.availableHeight - height) / 2
-        width: 20
+    indicator: Item {
+        id: checkmark
 
-        visible: control.subMenu
-        rotation: control.mirrored ? 90 : -90
-        color: control.down || control.hovered || control.highlighted ? Fusion.highlightedText(control.palette) : control.palette.text
-        source: "qrc:/qt-project.org/imports/QtQuick/Controls/Fusion/images/arrow.png"
-        fillMode: Image.Pad
+        visible: control.checkable && control.checked
+        anchors.left: parent.left
+        width: 22
+        height: 22
+
+        BorderImage {
+            anchors.fill: parent
+
+            border.left: 3
+            border.right: 3
+            border.top: 3
+            border.bottom: 3
+
+
+            horizontalTileMode: BorderImage.Repeat
+            verticalTileMode: BorderImage.Repeat
+
+            source: Qt.resolvedUrl("assets/windows/menu/checkmark_background.png")
+        }
+
+        // Above background
+        Image {
+            width: 11
+            height: 11
+            anchors.centerIn: parent
+
+            source: Qt.resolvedUrl("assets/windows/menu/checkmark.png")
+        }
     }
-
-    indicator: CheckIndicator {
-        x: control.mirrored ? control.width - width - control.rightPadding : control.leftPadding
-        y: control.topPadding + (control.availableHeight - height) / 2
-
-        control: control
-        visible: control.checkable
-    }
-
     background: Rectangle {
-        implicitWidth: 200
-        implicitHeight: 20
+
+        anchors.fill: parent
 
         color: "#f1f1f1"
 
@@ -108,5 +118,10 @@ T.MenuItem {
                 return ""
             }
         }
+    }
+
+    onTriggered: {
+        console.log("button w: " + width)
+        console.log("button imp w: " + implicitWidth)
     }
 }
