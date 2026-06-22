@@ -84,6 +84,8 @@ T.MenuItem {
         implicitWidth: 200
         implicitHeight: 20
 
+        color: "#f1f1f1"
+
         BorderImage {
             anchors.fill: parent
 
