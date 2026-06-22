@@ -6,10 +6,10 @@ Menu {
 
     MenuItem {
         text: "Undo"
-        enabled: window.document.canUndo
+        enabled: window.document.textArea.canUndo
 
         onTriggered: {
-            window.undoText()
+            window.document.textArea.undo()
         }
     }
 
@@ -17,33 +17,33 @@ Menu {
 
     MenuItem {
         text: "Cut"
-        enabled: window.document.hasSelection
+        enabled: window.document.textArea.hasSelection
 
         onTriggered: {
-            window.document.cut()
+            window.document.textArea.cut()
         }
     }
     MenuItem {
         text: "Copy"
-        enabled: window.document.hasSelection
+        enabled: window.document.textArea.hasSelection
 
         onTriggered: {
-            window.document.copy()
+            window.document.textArea.copy()
         }
     }
     MenuItem {
         text: "Paste"
 
         onTriggered: {
-            window.document.paste()
+            window.document.textArea.paste()
         }
     }
     MenuItem {
         text: "Delete"
-        enabled: window.document.hasSelection
+        enabled: window.document.textArea.hasSelection
 
         onTriggered: {
-            window.document.remove(window.document.getSelection()[0], window.document.getSelection()[1])
+            window.document.textArea.remove(window.document.getSelection()[0], window.document.getSelection()[1])
         }
     }
 
@@ -51,7 +51,7 @@ Menu {
 
     MenuItem {
         text: "Find..."
-        enabled: window.document.length > 0
+        enabled: window.document.textArea.length > 0
 
         onTriggered: {
             window.findWindow.show()
@@ -60,7 +60,7 @@ Menu {
 
     MenuItem {
         text: "Find Next..."
-        enabled: window.document.length > 0
+        enabled: window.document.textArea.length > 0
     }
 
     MenuItem {
@@ -79,14 +79,14 @@ Menu {
     MenuItem {
         text: "Select All"
         onTriggered: {
-            window.document.selectAll()
+            window.document.textArea.selectAll()
         }
     }
     MenuItem {
         text: "Time/Date"
         onTriggered: {
             let str = window.getCurrentTime() + " " + window.getCurrentDate()
-            window.document.insert(window.document.cursorPosition, str)
+            window.document.textArea.insert(window.document.textArea.cursorPosition, str)
         }
     }
 

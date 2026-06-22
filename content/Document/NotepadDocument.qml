@@ -1,12 +1,88 @@
 import QtQuick
+import QtQuick.Controls
 import QtQuick.Dialogs
 
-TextEdit {
-    property bool hasSelection: false
+ScrollView {
+    property alias textArea: textArea
+    property alias textDocument: textArea.textDocument
     property var pendingOperation: null
     property int currentLine: 1
 
-    wrapMode: TextEdit.NoWrap
+    TextArea {
+    id: textArea
+        property bool hasSelection: false
+
+        wrapMode: TextEdit.NoWrap
+
+        MessageDialog {
+            id: saveFilePrompt
+            buttons: MessageDialog.Save | MessageDialog.Discard | MessageDialog.Cancel
+            title: window.appTitle
+            text: "Do you want to save changes to " + getFormalFileName() + "?"
+
+            onButtonClicked: function(button, role) {
+                switch (button) {
+                    case MessageDialog.Save:
+                        if (textDocument.source === Qt.resolvedUrl("")) {
+                            console.log("Prompting save file location...")
+                            invokeSaveAs()
+                            return
+                        }
+                        invokeSave()
+                        break
+                    case MessageDialog.Discard:
+                        // Won't change source otherwise
+                        textDocument.modified = false
+                        break
+                    case MessageDialog.Cancel:
+                        pendingOperation = null
+                        break
+                }
+                handlePendingOperation()
+            }
+        }
+
+
+        FileDialog {
+            id: saveFileLocationDialog
+            title: "Save As"
+            defaultSuffix: "txt"
+            nameFilters: ["Text Documents (*.txt)", "All Files"]
+            fileMode: FileDialog.SaveFile
+            onAccepted: {
+                textDocument.saveAs(selectedFile)
+                handlePendingOperation()
+            }
+            onRejected: {
+                pendingOperation = null
+            }
+        }
+
+        FileDialog {
+            id: loadFileLocationDialog
+            title: "load"
+            nameFilters: ["Text Documents (*.txt)", "All Files"]
+            onAccepted: {
+                load(selectedFile)
+            }
+        }
+
+        textDocument.onSourceChanged: {
+            console.log("Source changed to \"" + textDocument.source + "\"")
+            window.updateTitle(getFormalFileName())
+        }
+
+        onSelectionStartChanged: {
+            hasSelection = isSelectionValid()
+            let textUpToCursor = text.substring(0, cursorSelection.selectionStart);
+            let lines = textUpToCursor.split("\n")
+            currentLine = lines.length
+        }
+
+        onSelectionEndChanged: {
+            hasSelection = isSelectionValid()
+        }
+    }
 
     function invokeCreate() {
         console.log("Creating new file...")
@@ -47,7 +123,7 @@ TextEdit {
     function resetDocument() {
         // Source reset first as clear() triggers modified state
         textDocument.source = Qt.resolvedUrl("")
-        clear()
+        textArea.clear()
 
         // Directly override due to above
         textDocument.modified = false
@@ -89,7 +165,7 @@ TextEdit {
             targetPos += lines[i].length + 1
         }
 
-        cursorPosition = targetPos
+        textArea.cursorPosition = targetPos
 
         return true
     }
@@ -102,93 +178,23 @@ TextEdit {
         text = ""
         text = temp
     }
-
-    MessageDialog {
-        id: saveFilePrompt
-        buttons: MessageDialog.Save | MessageDialog.Discard | MessageDialog.Cancel
-        title: window.appTitle
-        text: "Do you want to save changes to " + getFormalFileName() + "?"
-
-        onButtonClicked: function(button, role) {
-            switch (button) {
-                case MessageDialog.Save:
-                    if (textDocument.source === Qt.resolvedUrl("")) {
-                        console.log("Prompting save file location...")
-                        invokeSaveAs()
-                        return
-                    }
-                    invokeSave()
-                    break
-                case MessageDialog.Discard:
-                    // Won't change source otherwise
-                    textDocument.modified = false
-                    break
-                case MessageDialog.Cancel:
-                    pendingOperation = null
-                    break
+     function handlePendingOperation() {
+            if (pendingOperation) {
+                let operation = pendingOperation
+                pendingOperation = null
+                operation()
             }
-            handlePendingOperation()
         }
-    }
 
-    function handlePendingOperation() {
-        if (pendingOperation) {
-            let operation = pendingOperation
-            pendingOperation = null
-            operation()
+        function getSelection() {
+            return ([
+                textArea.cursorSelection.selectionStart,
+                textArea.cursorSelection.selectionEnd
+            ])
         }
-    }
 
-    function getSelection() {
-        return ([
-            cursorSelection.selectionStart,
-            cursorSelection.selectionEnd
-        ])
-    }
-
-    function isSelectionValid() {
-        let sel = getSelection()
-        return (sel[0] !== sel[1])
-    }
-    FileDialog {
-        id: saveFileLocationDialog
-        title: "Save As"
-        defaultSuffix: "txt"
-        nameFilters: ["Text Documents (*.txt)", "All Files"]
-        fileMode: FileDialog.SaveFile
-        onAccepted: {
-            textDocument.saveAs(selectedFile)
-            handlePendingOperation()
+        function isSelectionValid() {
+            let sel = getSelection()
+            return (sel[0] !== sel[1])
         }
-        onRejected: {
-            pendingOperation = null
-        }
-    }
-
-    FileDialog {
-        id: loadFileLocationDialog
-        title: "load"
-        nameFilters: ["Text Documents (*.txt)", "All Files"]
-        onAccepted: {
-            load(selectedFile)
-        }
-    }
-
-    textDocument.onSourceChanged: {
-        console.log("Source changed to \"" + textDocument.source + "\"")
-        window.updateTitle(getFormalFileName())
-    }
-
-    onSelectionStartChanged: {
-        hasSelection = isSelectionValid()
-        let textUpToCursor = text.substring(0, cursorSelection.selectionStart);
-        let lines = textUpToCursor.split("\n")
-        currentLine = lines.length
-    }
-
-    onSelectionEndChanged: {
-        hasSelection = isSelectionValid()
-    }
-
-
 }
