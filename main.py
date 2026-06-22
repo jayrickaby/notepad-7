@@ -6,8 +6,23 @@ from PySide6.QtGui import QGuiApplication
 from PySide6.QtQml import QQmlApplicationEngine
 from PySide6.QtGui import QIcon
 from PySide6.QtQuickControls2 import QQuickStyle
-from src.toolbar import NotepadToolbar
+from PySide6.QtCore import QSysInfo
 
+def getOsName():
+    type = QSysInfo.productType()
+    name = QSysInfo.prettyProductName()
+
+    # Format Windows to look exactly like it is in Winver
+    if type == "windows":
+        name = "Microsoft Windows"
+
+    return name
+
+def getOsVersion():
+    return QSysInfo.productVersion()
+
+def getOsBuild():
+    return QSysInfo.kernelVersion()
 
 if __name__ == "__main__":
     app = QGuiApplication(sys.argv)
@@ -19,8 +34,14 @@ if __name__ == "__main__":
 
     app.setWindowIcon(QIcon("content/Aero7/assets/windows/icon/icon.ico"))
 
-    toolbarBackend = NotepadToolbar()
-    engine.rootContext().setContextProperty("toolbarBackend", toolbarBackend)
+    osName = getOsName()
+    engine.rootContext().setContextProperty("osName", osName)
+
+    osVersion = getOsVersion()
+    engine.rootContext().setContextProperty("osVersion", osVersion)
+
+    osBuild = getOsBuild()
+    engine.rootContext().setContextProperty("osBuild", osBuild)
 
     engine.addImportPath(Path(__file__).parent)
     engine.loadFromModule("content", "Main")
