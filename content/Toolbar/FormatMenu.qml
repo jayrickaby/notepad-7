@@ -7,6 +7,16 @@ Menu {
 
     MenuItem {
         text: "Word Wrap"
+        checkable: true
+
+        onTriggered: {
+            if (checked) {
+                window.document.setWrapMode(TextEdit.Wrap)
+                return
+            }
+
+            window.document.setWrapMode(TextEdit.NoWrap)
+        }
     }
     MenuItem {
         text: "Font..."

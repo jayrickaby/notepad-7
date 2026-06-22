@@ -14,8 +14,8 @@ ApplicationWindow {
     id: window
 
     property alias document: document
-    property alias editMenu: editMenu
     property alias aboutWindow: aboutWindow
+    property alias editMenu: editMenu
     property alias findWindow: findWindow
     property alias gotoWindow: gotoWindow
 

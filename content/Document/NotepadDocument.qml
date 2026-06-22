@@ -6,6 +6,7 @@ TextEdit {
     property var pendingOperation: null
     property int currentLine: 1
 
+    wrapMode: TextEdit.NoWrap
 
     function invokeCreate() {
         console.log("Creating new file...")
@@ -91,7 +92,15 @@ TextEdit {
         cursorPosition = targetPos
 
         return true
+    }
 
+    function setWrapMode(mode) {
+        wrapMode = mode
+        console.log(wrapMode)
+
+        var temp = text
+        text = ""
+        text = temp
     }
 
     MessageDialog {
