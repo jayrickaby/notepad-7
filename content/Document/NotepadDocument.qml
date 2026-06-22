@@ -19,6 +19,8 @@ ScrollView {
         wrapMode: TextEdit.NoWrap
         font.family: "Lucida Console"
         font.pointSize: 10
+        font.letterSpacing: 0.18
+        renderType: Text.NativeRendering
 
         leftPadding: 3
         topPadding: 2
