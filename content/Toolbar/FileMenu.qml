@@ -27,7 +27,15 @@ Menu {
             text: "Save"
             shortcut: "Ctrl+S"
 
-            onTriggered: window.document.invokeSave()
+            onTriggered: {
+                window.document.handleChanges(function() {
+                    if (window.document.textArea.text === "" && window.document.textArea.source !== Qt.resolvedUrl("")) {
+                        window.document.invokeSaveAs()
+                        return
+                    }
+                    window.document.invokeSave()
+                })
+            }
         }
     }
     MenuItem {

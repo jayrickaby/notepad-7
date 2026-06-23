@@ -140,7 +140,7 @@ ScrollView {
         textDocument.modified = false
     }
     function isModified() {
-        console.log("Current file is modified.")
+        console.log("Current file modified: " + textDocument.modified)
         return textDocument.modified
     }
 
