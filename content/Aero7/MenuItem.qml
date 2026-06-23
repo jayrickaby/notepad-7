@@ -14,9 +14,6 @@ T.MenuItem {
     readonly property url backgroundPushed: Qt.resolvedUrl("assets/windows/menu/menuitem_pushed.png")
     readonly property url imgGutter: Qt.resolvedUrl("assets/windows/menu/menu_gutter.png")
 
-
-    property string shortcut: ""
-
     id: control
 
     implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
@@ -42,8 +39,9 @@ T.MenuItem {
         spacing: 64
         anchors.fill: parent
 
+        // Item Label
         Text {
-            text: control.text
+            text: control.action ? control.action.text : control.text
             font: control.font
             Layout.preferredHeight: 22
             Layout.leftMargin: 22 + 3 + 3 + 4
@@ -51,11 +49,16 @@ T.MenuItem {
             Layout.topMargin: 2
             Layout.bottomMargin: -2
             renderType: Text.NativeRendering
-            color: enabled ? "#000000" : "#6D6D6D"
+            color: control.enabled ? "#000000" : "#6D6D6D"
+
+            Component.onCompleted : {
+                console.log(control.action ? control.action.text : control.text)
+            }
         }
 
+        // Shortcut
         Text {
-            text: control.shortcut
+            text: control.action ? control.action.shortcut : ""
             font: control.font
             Layout.preferredHeight: 22
             Layout.alignment : Qt.AlignVCenter | Qt. AlignRight
@@ -65,8 +68,11 @@ T.MenuItem {
             Layout.bottomMargin: -2
 
             renderType: Text.NativeRendering
-            color: enabled ? "#000000" : "#6D6D6D"
+            color: control.enabled ? "#000000" : "#6D6D6D"
         }
+            Component.onCompleted : {
+                console.log(control.action ? control.action.shortcut : "")
+            }
     }
 
     indicator: Item {

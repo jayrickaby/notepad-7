@@ -7,27 +7,27 @@ Menu {
     y: parent.height
 
     MenuItem {
-        text: "New"
-        shortcut: "Ctrl+N"
+        action: Action {
+            text: "New"
+            shortcut: "Ctrl+N"
 
-        onTriggered: {
-            window.document.invokeCreate()
+            onTriggered: window.document.invokeCreate()
         }
     }
     MenuItem {
-        text: "Open..."
-        shortcut: "Ctrl+O"
+        action: Action {
+            text: "Open"
+            shortcut: "Ctrl+O"
 
-        onTriggered: {
-            window.document.invokeLoad()
+            onTriggered: window.document.invokeLoad()
         }
     }
     MenuItem {
-        text: "Save"
-        shortcut: "Ctrl+S"
+        action: Action {
+            text: "Save"
+            shortcut: "Ctrl+S"
 
-        onTriggered: {
-            window.document.invokeSave()
+            onTriggered: window.document.invokeSave()
         }
     }
     MenuItem {
@@ -44,8 +44,12 @@ Menu {
         text: "Page Setup..."
     }
     MenuItem {
-        text: "Print..."
-        shortcut: "Ctrl+P"
+        action: Action {
+            text: "Print..."
+            shortcut: "Ctrl+P"
+
+            // onTriggered: window.document.invokeLoad()
+        }
     }
 
     MenuSeparator { }
