@@ -6,6 +6,7 @@ Menu {
 
     MenuItem {
         text: "Undo"
+        shortcut: "Ctrl+Z"
         enabled: window.document.textArea.canUndo
 
         onTriggered: {
@@ -17,6 +18,7 @@ Menu {
 
     MenuItem {
         text: "Cut"
+        shortcut: "Ctrl+X"
         enabled: window.document.textArea.hasSelection
 
         onTriggered: {
@@ -25,6 +27,7 @@ Menu {
     }
     MenuItem {
         text: "Copy"
+        shortcut: "Ctrl+C"
         enabled: window.document.textArea.hasSelection
 
         onTriggered: {
@@ -33,6 +36,7 @@ Menu {
     }
     MenuItem {
         text: "Paste"
+        shortcut: "Ctrl+V"
 
         onTriggered: {
             window.document.textArea.paste()
@@ -40,6 +44,7 @@ Menu {
     }
     MenuItem {
         text: "Delete"
+        shortcut: "Del"
         enabled: window.document.textArea.hasSelection
 
         onTriggered: {
@@ -51,6 +56,7 @@ Menu {
 
     MenuItem {
         text: "Find..."
+        shortcut: "Ctrl+F"
         enabled: window.document.textArea.length > 0
 
         onTriggered: {
@@ -60,15 +66,18 @@ Menu {
 
     MenuItem {
         text: "Find Next..."
+        shortcut: "F3"
         enabled: window.document.textArea.length > 0
     }
 
     MenuItem {
         text: "Replace..."
+        shortcut: "Ctrl+H"
     }
 
     MenuItem {
         text: "Go To..."
+        shortcut: "Ctrl+G"
         onTriggered: {
             window.gotoWindow.show()
         }
@@ -78,12 +87,14 @@ Menu {
 
     MenuItem {
         text: "Select All"
+        shortcut: "Ctrl+A"
         onTriggered: {
             window.document.textArea.selectAll()
         }
     }
     MenuItem {
         text: "Time/Date"
+        shortcut: "F5"
         onTriggered: {
             let str = window.getCurrentTime() + " " + window.getCurrentDate()
             window.document.textArea.insert(window.document.textArea.cursorPosition, str)
