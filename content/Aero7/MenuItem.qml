@@ -27,6 +27,8 @@ T.MenuItem {
 
     padding: 0
 
+
+
     //Explicitly set 9 or else it is slightly too big
     font.pointSize: 9
     font.letterSpacing: 0.10
@@ -49,20 +51,21 @@ T.MenuItem {
             Layout.topMargin: 2
             Layout.bottomMargin: -2
             renderType: Text.NativeRendering
+            color: enabled ? "#000000" : "#6D6D6D"
         }
 
         Text {
             text: control.shortcut
             font: control.font
             Layout.preferredHeight: 22
-            Layout.alignment : Qt.AlignVCenter, Qt. AlignRight
+            Layout.alignment : Qt.AlignVCenter | Qt. AlignRight
             Layout.rightMargin: 18
             horizontalAlignment: Text.AlignRight
-        Layout.topMargin: 2
-        Layout.bottomMargin: -2
+            Layout.topMargin: 2
+            Layout.bottomMargin: -2
 
             renderType: Text.NativeRendering
-
+            color: enabled ? "#000000" : "#6D6D6D"
         }
     }
 
