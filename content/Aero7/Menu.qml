@@ -4,6 +4,7 @@ import QtQuick.Templates as T
 import QtQuick.Controls.impl
 import QtQuick.Controls.Fusion
 import QtQuick.Controls.Fusion.impl
+import QtQuick.Effects
 import QtQuick.Window
 
 T.Menu {
@@ -28,6 +29,16 @@ T.Menu {
     }
 
     background: Rectangle {
+        RectangularShadow {
+            width: control.width - 8
+            height: control.height - 8
+            blur: 2
+            offset.x: 1 + 8
+            offset.y: 1 + 8
+            color: "#8e8e8e"
+            spread: 2
+            radius: 0
+        }
         BorderImage {
             anchors.fill: parent
 
@@ -40,6 +51,7 @@ T.Menu {
             verticalTileMode: BorderImage.Repeat
 
             source: Qt.resolvedUrl("assets/windows/menu/menu_background.png")
+
         }
     }
 
