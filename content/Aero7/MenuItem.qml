@@ -7,6 +7,7 @@ import QtQuick.Templates as T
 import QtQuick.Controls.impl
 import QtQuick.Controls.Fusion
 import QtQuick.Controls.Fusion.impl
+import QtQuick.Layouts
 
 T.MenuItem {
     readonly property url backgroundHot: Qt.resolvedUrl("assets/windows/menu/menuitem_hot.png")
@@ -28,36 +29,40 @@ T.MenuItem {
 
     //Explicitly set 9 or else it is slightly too big
     font.pointSize: 9
+    font.letterSpacing: 0.10
     font.hintingPreference: Font.PreferFullHinting
 
-    contentItem: Row {
-        leftPadding: 22 + 3 + 3 + 4  // checkmark + empty space + gutter + empty space
-        rightPadding: 20
 
-        spacing: 20
+    contentItem: RowLayout {
+//        leftPadding: 22 + 3 + 3 + 4  // checkmark + empty space + gutter + empty space
+//        rightPadding: 19
+
+        spacing: 64
+        anchors.fill: parent
 
         Text {
             text: control.text
             font: control.font
-            height: 22
-            anchors.verticalCenter: parent.verticalCenter
-            anchors.verticalCenterOffset: 2
-//            anchors.rightMargin: 200
-
+            Layout.preferredHeight: 22
+            Layout.leftMargin: 22 + 3 + 3 + 4
+            Layout.alignment : Qt.AlignVCenter
+            Layout.topMargin: 2
+            Layout.bottomMargin: -2
             renderType: Text.NativeRendering
         }
 
         Text {
             text: control.shortcut
             font: control.font
-            height: 22
-//            width: parent.width - x //+ parent.spacing
-            anchors.verticalCenter: parent.verticalCenter
-            anchors.verticalCenterOffset: 2
-
+            Layout.preferredHeight: 22
+            Layout.alignment : Qt.AlignVCenter, Qt. AlignRight
+            Layout.rightMargin: 18
             horizontalAlignment: Text.AlignRight
+        Layout.topMargin: 2
+        Layout.bottomMargin: -2
 
             renderType: Text.NativeRendering
+
         }
     }
 
@@ -130,10 +135,5 @@ T.MenuItem {
                 return ""
             }
         }
-    }
-
-    onTriggered: {
-        console.log("button w: " + width)
-        console.log("button imp w: " + implicitWidth)
     }
 }
