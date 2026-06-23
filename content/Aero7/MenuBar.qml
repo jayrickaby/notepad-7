@@ -21,6 +21,7 @@ T.MenuBar {
     }
     // End copy
 
+    // FIXME: positioning is weird. 1px too high or low (i forgot).
     background: BorderImage {
         border.left: 1
         border.right: 1
