@@ -41,8 +41,8 @@ ApplicationWindow {
             id: editMenu
         }
         FormatMenu {}
-        HelpMenu {}
         ViewMenu {}
+        HelpMenu {}
     }
 
     NotepadDocument {
