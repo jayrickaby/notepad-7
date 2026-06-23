@@ -3,6 +3,9 @@ import QtQuick.Controls
 import QtQuick.Layouts
 import QtQuick.Window
 
+// TODO: ApplicationWindow
+// TODO: Make pretty
+// TODO: Add functionality
 Window {
     width: 370
     height: 139

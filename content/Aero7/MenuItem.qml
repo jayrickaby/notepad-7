@@ -138,6 +138,7 @@ T.MenuItem {
                 if (control.pressed) {
                     return backgroundPushed
                 }
+                // TODO: unhighlight when mouse is off menu
                 if (control.highlighted) {
                     return backgroundHot
                 }

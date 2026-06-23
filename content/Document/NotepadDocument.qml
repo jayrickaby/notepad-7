@@ -2,6 +2,7 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Dialogs
 
+// TODO: Adjust style of scrollbars
 ScrollView {
     property alias textArea: textArea
     property alias textDocument: textArea.textDocument

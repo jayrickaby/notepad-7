@@ -28,6 +28,7 @@ ApplicationWindow {
     ColumnLayout {
         anchors.fill: parent
 
+        // FIXME: Is currently overstretched and stuff.
         Image {
         id: img
             Layout.alignment: Qt.AlignHCenter

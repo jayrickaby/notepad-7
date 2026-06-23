@@ -17,7 +17,8 @@ T.MenuBarItem {
 
 
     // Override so its similar to windows font rendering
-    // TODO: Replace with custom.
+    // TODO: Replace with custom
+    // TODO: adjust font rendering
     contentItem: IconLabel {
         text: control.text
 
@@ -46,6 +47,7 @@ T.MenuBarItem {
 
         // Swap the image asset depending on whether the button is hovered or pressed
         source: {
+            // TODO: keep pressed while menu is open
             if (control.pressed) {
                 return backgroundPushed
             }
