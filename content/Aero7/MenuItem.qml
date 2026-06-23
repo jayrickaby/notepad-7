@@ -13,6 +13,9 @@ T.MenuItem {
     readonly property url backgroundPushed: Qt.resolvedUrl("assets/windows/menu/menuitem_pushed.png")
     readonly property url imgGutter: Qt.resolvedUrl("assets/windows/menu/menu_gutter.png")
 
+
+    property string shortcut: ""
+
     id: control
 
     implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
@@ -29,7 +32,9 @@ T.MenuItem {
 
     contentItem: Row {
         leftPadding: 22 + 3 + 3 + 4  // checkmark + empty space + gutter + empty space
-        rightPadding: 52
+        rightPadding: 20
+
+        spacing: 20
 
         Text {
             text: control.text
@@ -37,6 +42,20 @@ T.MenuItem {
             height: 22
             anchors.verticalCenter: parent.verticalCenter
             anchors.verticalCenterOffset: 2
+//            anchors.rightMargin: 200
+
+            renderType: Text.NativeRendering
+        }
+
+        Text {
+            text: control.shortcut
+            font: control.font
+            height: 22
+//            width: parent.width - x //+ parent.spacing
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.verticalCenterOffset: 2
+
+            horizontalAlignment: Text.AlignRight
 
             renderType: Text.NativeRendering
         }

@@ -8,6 +8,7 @@ Menu {
 
     MenuItem {
         text: "New"
+        shortcut: "Ctrl+N"
 
         onTriggered: {
             window.document.invokeCreate()
@@ -15,6 +16,7 @@ Menu {
     }
     MenuItem {
         text: "Open..."
+        shortcut: "Ctrl+O"
 
         onTriggered: {
             window.document.invokeLoad()
@@ -22,6 +24,7 @@ Menu {
     }
     MenuItem {
         text: "Save"
+        shortcut: "Ctrl+S"
 
         onTriggered: {
             window.document.invokeSave()
@@ -42,6 +45,7 @@ Menu {
     }
     MenuItem {
         text: "Print..."
+        shortcut: "Ctrl+P"
     }
 
     MenuSeparator { }
