@@ -26,6 +26,21 @@ ScrollView {
         leftPadding: 3
         topPadding: 2
 
+        ContextMenu.menu: Menu {
+            MenuItem { action: window.editMenu.undoAction }
+
+            MenuSeparator{}
+
+            MenuItem { action: window.editMenu.cutAction }
+            MenuItem { action: window.editMenu.copyAction }
+            MenuItem { action: window.editMenu.pasteAction }
+            MenuItem { action: window.editMenu.deleteAction }
+
+            MenuSeparator{}
+
+            MenuItem { action: window.editMenu.selectAllAction }
+        }
+
         MessageDialog {
             id: saveFilePrompt
             buttons: MessageDialog.Save | MessageDialog.Discard | MessageDialog.Cancel
