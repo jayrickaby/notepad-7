@@ -9,6 +9,8 @@ ScrollView {
     property var pendingOperation: null
     property int currentLine: 1
 
+    // property url globalCurrentFile
+
     ScrollBar.horizontal.policy: {textArea.wrapMode === Text.NoWrap ? ScrollBar.AlwaysOn : ScrollBar.AlwaysOff}
     ScrollBar.vertical.policy: ScrollBar.AlwaysOn
 
@@ -76,6 +78,19 @@ ScrollView {
             nameFilters: ["Text Documents (*.txt)", "All Files"]
             onAccepted: {
                 load(selectedFile)
+            }
+
+            onVisibleChanged: {
+                if (visible === true) {
+                    if (textDocument.source !== Qt.resolvedUrl("")) {
+                        console.log("Setting load file dialog selected file to: \"" + textDocument.source + "\"")
+                        selectedFile = textDocument.source
+                        currentFolder = getParentFolder(textDocument.Source)
+                        return
+                    }
+                    console.log("Setting load file dialog current folder to: \"" + window.documentsFolder + "\"")
+                    currentFolder = window.documentsFolder
+                }
             }
         }
 
@@ -189,6 +204,10 @@ ScrollView {
         let temp = textArea.text
         textArea.text = ""
         textArea.text = temp
+    }
+
+    function getParentFolder(url) {
+        return Qt.resolvedUrl(url.toString().substring(0, url.toString().lastIndexOf("/")))
     }
      function handlePendingOperation() {
             if (pendingOperation) {
