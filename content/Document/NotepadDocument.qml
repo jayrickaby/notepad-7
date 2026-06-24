@@ -38,7 +38,22 @@ ScrollView {
 
             MenuSeparator{}
 
-            MenuItem { action: window.editMenu.selectAllAction }
+            MenuItem {
+                action: window.editMenu.selectAllAction
+                // disable on no text or already full selection
+                enabled: !(textArea.length === 0 || (textArea.selectionStart === 0 && textArea.selectionEnd === textArea.length))
+            }
+
+            MenuSeparator{}
+
+            MenuItem { text: "Right to left Reading Order"}
+            MenuItem { text: "Show Unicode control characters"}
+            MenuItem { text: "Insert Unicode control characters"}
+
+            MenuSeparator{}
+
+            MenuItem { text: "Open IME"}
+            MenuItem { text: "Reconversion"}
         }
 
         MessageDialog {
