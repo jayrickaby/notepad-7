@@ -9,8 +9,6 @@ ScrollView {
     property var pendingOperation: null
     property int currentLine: 1
 
-    // property url globalCurrentFile
-
     ScrollBar.horizontal.policy: {textArea.wrapMode === Text.NoWrap ? ScrollBar.AlwaysOn : ScrollBar.AlwaysOff}
     ScrollBar.vertical.policy: ScrollBar.AlwaysOn
 
@@ -85,7 +83,7 @@ ScrollView {
                     if (textDocument.source !== Qt.resolvedUrl("")) {
                         console.log("Setting load file dialog selected file to: \"" + textDocument.source + "\"")
                         selectedFile = textDocument.source
-                        currentFolder = getParentFolder(textDocument.Source)
+                        currentFolder = getParentFolder(textDocument.source)
                         return
                     }
                     console.log("Setting load file dialog current folder to: \"" + window.documentsFolder + "\"")
