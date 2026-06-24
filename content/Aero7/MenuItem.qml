@@ -51,10 +51,6 @@ T.MenuItem {
             Layout.bottomMargin: -2
             renderType: Text.NativeRendering
             color: control.enabled ? "#000000" : "#6D6D6D"
-
-            Component.onCompleted : {
-                console.log(control.action ? control.action.text : control.text)
-            }
         }
 
         // Shortcut
@@ -71,9 +67,6 @@ T.MenuItem {
             renderType: Text.NativeRendering
             color: control.enabled ? "#000000" : "#6D6D6D"
         }
-            Component.onCompleted : {
-                console.log(control.action ? control.action.shortcut : "")
-            }
     }
 
     indicator: Item {
