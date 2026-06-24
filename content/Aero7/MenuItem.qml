@@ -32,6 +32,7 @@ T.MenuItem {
     font.hintingPreference: Font.PreferFullHinting
 
 
+    // TODO: adjust widths
     contentItem: RowLayout {
 //        leftPadding: 22 + 3 + 3 + 4  // checkmark + empty space + gutter + empty space
 //        rightPadding: 19
