@@ -205,7 +205,8 @@ ScrollView {
     }
 
     function getParentFolder(url) {
-        return Qt.resolvedUrl(url.toString().substring(0, url.toString().lastIndexOf("/")))
+        let resolved = Qt.resolvedUrl(url)
+        return Qt.resolvedUrl(resolved.toString().substring(0, resolved.toString().lastIndexOf("/")))
     }
      function handlePendingOperation() {
             if (pendingOperation) {
