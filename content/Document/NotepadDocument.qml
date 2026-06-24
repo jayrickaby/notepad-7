@@ -68,6 +68,18 @@ ScrollView {
             onRejected: {
                 pendingOperation = null
             }
+            onVisibleChanged: {
+                if (visible === true) {
+                    if (textDocument.source !== Qt.resolvedUrl("")) {
+                        console.log("Setting save as file dialog selected file to: \"" + textDocument.source + "\"")
+                        selectedFile = textDocument.source
+                        currentFolder = getParentFolder(textDocument.source)
+                        return
+                    }
+                    console.log("Setting save as file dialog current folder to: \"" + window.documentsFolder + "\"")
+                    currentFolder = window.documentsFolder
+                }
+            }
         }
 
         FileDialog {
