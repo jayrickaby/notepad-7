@@ -107,6 +107,22 @@ ApplicationWindow {
         }
     }
 
+    // Override textfield interception
+    Shortcut {
+        sequence: "Escape"
+        onActivated: {
+            console.log("Escape pressed globally");
+            close();
+        }
+    }
+
+    Shortcut {
+        sequence: "Enter"
+        onActivated: {
+
+        }
+    }
+
     onVisibleChanged: {
         reset()
     }
