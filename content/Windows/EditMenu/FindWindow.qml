@@ -23,6 +23,7 @@ ApplicationWindow {
             RowLayout {
                 Text { text: "Find what:" }
                 TextField {
+                    id: inputField
                     Layout.fillWidth: true
                 }
             }
@@ -40,7 +41,13 @@ ApplicationWindow {
         }
 
         ColumnLayout {
-            Button { text: "Find Next" }
+            Button {
+                text: "Find Next"
+
+                onClicked: {
+                    console.log(window.document.findNextWord(inputField.text))
+                }
+            }
             Button { text: "Cancel" }
         }
     }

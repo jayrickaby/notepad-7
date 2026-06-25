@@ -9,6 +9,8 @@ ScrollView {
     property var pendingOperation: null
     property int currentLine: 1
 
+    property int lastCursorStartPosition: 0
+
     ScrollBar.horizontal.policy: {textArea.wrapMode === Text.NoWrap ? ScrollBar.AlwaysOn : ScrollBar.AlwaysOff}
     ScrollBar.vertical.policy: ScrollBar.AlwaysOn
 
@@ -114,6 +116,10 @@ ScrollView {
             let textUpToCursor = text.substring(0, cursorSelection.selectionStart);
             let lines = textUpToCursor.split("\n")
             currentLine = lines.length
+
+            if (cursorSelection.selectionStart !== undefined && cursorSelection.selectionStart >= 0) {
+                lastCursorStartPosition = cursorSelection.selectionStart
+            }
         }
 
         onSelectionEndChanged: {
@@ -221,22 +227,32 @@ ScrollView {
         return Qt.resolvedUrl(resolved.toString().substring(0, resolved.toString().lastIndexOf("/")))
     }
      function handlePendingOperation() {
-            if (pendingOperation) {
-                let operation = pendingOperation
-                pendingOperation = null
-                operation()
-            }
+        if (pendingOperation) {
+            let operation = pendingOperation
+            pendingOperation = null
+            operation()
         }
+    }
 
-        function getSelection() {
-            return ([
-                textArea.cursorSelection.selectionStart,
-                textArea.cursorSelection.selectionEnd
-            ])
-        }
+    function getSelection() {
+        return ([
+            textArea.cursorSelection.selectionStart,
+            textArea.cursorSelection.selectionEnd
+        ])
+    }
 
-        function isSelectionValid() {
-            let sel = getSelection()
-            return (sel[0] !== sel[1])
-        }
+    function isSelectionValid() {
+        let sel = getSelection()
+        return (sel[0] !== sel[1])
+    }
+
+    function findNextWord(target) {
+        let position = []
+        let index = textArea.text.indexOf(target, lastCursorStartPosition)
+
+        position.push(index)
+        position.push(index + target.length)
+
+        return position
+    }
 }
