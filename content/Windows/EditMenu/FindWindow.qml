@@ -6,10 +6,17 @@ import QtQuick.Window
 // TODO: ApplicationWindow
 // TODO: Make pretty
 // TODO: Add functionality
-Window {
+ApplicationWindow {
     width: 370
     height: 139
     title: qsTr("Find")
+
+    // Not resizeable
+    maximumHeight: height
+    maximumWidth: width
+
+    minimumHeight: height
+    minimumWidth: width
 
     RowLayout {
         ColumnLayout{
