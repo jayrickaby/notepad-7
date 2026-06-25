@@ -15,7 +15,9 @@ Window {
         ColumnLayout{
             RowLayout {
                 Text { text: "Find what:" }
-                TextField {}
+                TextField {
+                    Layout.fillWidth: true
+                }
             }
 
             RowLayout {
