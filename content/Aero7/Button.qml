@@ -64,4 +64,12 @@ T.Button {
             return assetsDir + img
         }
     }
+    Keys.onPressed: (event)=> {
+        if (!control.activeFocus) { return }
+
+        if (event.key == Qt.Key_Return) {
+            event.accepted = true;
+            control.click()
+        }
+    }
 }

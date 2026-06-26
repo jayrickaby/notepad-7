@@ -53,6 +53,12 @@ ApplicationWindow {
             Layout.topMargin: 1
             Layout.fillWidth: true
             renderType: Text.NativeRendering
+
+            onActiveFocusChanged: {
+                if (!activeFocus) { return }
+
+                textField.selectAll()
+            }
         }
 
         RowLayout {
@@ -83,8 +89,6 @@ ApplicationWindow {
     function reset() {
         lineNumber = window.document.currentLine
         textField.forceActiveFocus()
-        textField.selectAll()
-
     }
 
     MessageDialog {
@@ -100,6 +104,22 @@ ApplicationWindow {
                     reset()
                     break
             }
+        }
+    }
+
+    // Override textfield interception
+    Shortcut {
+        sequence: "Escape"
+        onActivated: {
+            console.log("Escape pressed globally");
+            close();
+        }
+    }
+
+    Shortcut {
+        sequence: "Enter"
+        onActivated: {
+
         }
     }
 
